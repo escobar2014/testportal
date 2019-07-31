@@ -1,0 +1,154 @@
+//
+// Navs
+// --------------------------------------------------
+
+
+// Base class
+// --------------------------------------------------
+
+.sp-pagebuilder-nav {
+  margin: 0;
+  padding-left: 0; // Override default ul/ol
+  list-style: none;
+  &:extend(.clearfix all);
+
+  > li {
+    position: relative;
+    display: block;
+
+    > a {
+      position: relative;
+      display: block;
+      padding: @nav-link-padding;
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        background-color: @nav-link-hover-bg;
+      }
+    }
+
+    // Disabled state sets text to gray and nukes hover/tab effects
+    &.disabled > a {
+      color: @nav-disabled-link-color;
+
+      &:hover,
+      &:focus {
+        color: @nav-disabled-link-hover-color;
+        text-decoration: none;
+        background-color: transparent;
+        cursor: @cursor-disabled;
+      }
+    }
+  }
+
+  // Open dropdowns
+  .open > a {
+    &,
+    &:hover,
+    &:focus {
+      background-color: @nav-link-hover-bg;
+      border-color: @link-color;
+    }
+  }
+
+  // Nav dividers (deprecated with v3.0.1)
+  //
+  // This should have been removed in v3 with the dropping of `.nav-list`, but
+  // we missed it. We don't currently support this anywhere, but in the interest
+  // of maintaining backward compatibility in case you use it, it's deprecated.
+  .sp-pagebuilder-nav-divider {
+    .nav-divider();
+  }
+
+  // Prevent IE8 from misplacing imgs
+  //
+  // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
+  > li > a > img {
+    max-width: none;
+  }
+}
+
+
+// Tabs
+// -------------------------
+
+// Give the tabs something to sit on
+.sp-pagebuilder-nav-tabs {
+  background: @major_color;
+  > li {
+    float: left;
+    // Actual tabs (as links)
+    > a {
+      margin: 0;
+      line-height: @line-height-base;
+      padding: 20px;
+      margin: 0;
+      font-size: 14px;
+      font-weight: normal;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      .transition(all 300ms);
+      &:hover {
+        background-color: #fff;
+        color: #000;
+      }
+    }
+
+    // Active state, and its :hover to override normal :hover
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: #000;
+        background-color: #fff;
+        cursor: default;
+      }
+    }
+  }
+}
+
+.sp-pagebuilder-modal,
+.sp-pagebuilder-modal-alt {
+  .sp-pagebuilder-nav-tabs {
+    margin: -20px -30px 30px;
+    border-radius: 3px 3px 0 0;
+
+    > li:first-child {
+      >a:hover,
+      &.active > a {
+        &,
+        &:hover,
+        &:focus {
+          border-radius: 3px 0 0 0;
+        }
+      }
+    }
+  }
+}
+
+
+// Tabbable tabs
+// -------------------------
+
+// Hide tabbable panes to start, show them when `.active`
+.tab-content {
+  > .tab-pane {
+    display: none;
+  }
+  > .active {
+    display: block;
+  }
+}
+
+
+// Dropdowns
+// -------------------------
+
+// Specific dropdowns
+.sp-pagebuilder-nav-tabs .dropdown-menu {
+  // make dropdown border overlap tab border
+  margin-top: -1px;
+  // Remove the top rounded corners here since there is a hard edge above the menu
+  .border-top-radius(0);
+}

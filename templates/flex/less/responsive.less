@@ -1,0 +1,404 @@
+
+@media print {
+	.visible-print {
+		display: inherit!important;
+	}
+	.hidden-print {
+		display: none!important;
+	}
+}
+
+@media (min-width: @screen-md) {
+	
+	#sp-addspace-logo {
+		div.row {
+			.flexbox();
+			.flex-align-items();
+		}
+	}
+	.no-gutter .row > [class*="col-md"],
+	.no-gutter .row-fluid > [class*="col-"],
+	.no-padding > div > .row > [class*="col-"],
+	.no-padding > div > .row-fluid > [class*="col-"],
+	.no-gutter {
+		padding-right:0;
+		padding-left:0;
+		.flexbox();
+		.flex-align-items();
+		.flex-justify-content(center);
+	}
+	
+	
+}
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+	
+	.sp-megamenu-parent {
+		padding:0;
+		>li {
+			>a {
+				padding: 0 8px;
+
+			}
+		}
+	}	
+	
+}
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-md-min){
+
+	.flipper {
+		.back {
+			overflow:hidden;
+			.sppb-person-block {
+				.sppb-person-information {
+					padding:2px 5px 0 5px!important;
+				}
+			}
+
+			.sppb-person-introtext {
+				padding:3px 10px!important;
+				margin-top:0;
+				font-size:80%!important;
+			}
+			.sppb-person-social-icons {
+				position:absolute;
+				width:100%;
+				line-height:35px;
+				margin-bottom:-8px;
+				background:#fff;
+			}
+		}
+	}
+	.btn,
+	.sppb-btn {
+		&.responsive{
+			white-space: normal;
+		}
+	}
+	
+	.sp-comingsoon {
+		a.logo {
+			img.sp-default-logo {
+				margin:0 auto!important;
+			}
+			div.backhome {
+				display:none;
+			}
+			&:hover {
+				img.sp-default-logo {
+					text-align:center;
+					margin:0 auto;
+				}
+			}
+		}
+	}
+}
+@media (max-width: @screen-sm-min) {
+	
+	/* Fixing Container and left/right when SPPB page is inside Joomla Articles */
+	.has-left-right-modules {
+		.sppb-in-article-left,
+		.sppb-in-article-right { 
+			.sp-column {
+				width:100%;
+				padding:15px 35px;
+			}
+		}
+	}
+	
+	#sp-top2 { 
+		//width:auto;
+		margin-left: auto;
+		margin-right: auto;
+		//.flexbox();
+		//.flex-align-items();
+		//.flex-justify-content(center);	
+		
+
+		ul{
+			width:auto;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+	#sp-addspace-logo {
+		#sp-logo, #sp-addspace {
+			.flex-justify-content(center); //  to the center
+		}	
+	}
+
+	
+	
+	
+	.addspace,
+	.centered {
+		.sp-column {
+			text-align:center;
+			//margin:0 auto;
+			//padding:0;
+			
+			
+			>div{
+				//display:block;
+				width:100%;
+				margin:0 auto;
+				
+			}
+		}
+		
+	
+		>.container {	
+			>.row {
+
+				#cart-menu {
+					
+					float:left;
+					
+					&.shopping-menu-is-open {
+						padding:0;
+						width:100vw;
+						height:100vh;
+					}
+				}
+			}
+		}
+	
+	}
+	
+	//Top search
+	.top-search-wrapper{
+		right:30px;
+		width:50px;
+		
+		.icon-top-wrapper{
+			cursor: pointer;
+			width:50px;
+	
+			i.fa{
+				font-size:16px;
+				text-align:center;
+				width:50px;
+				margin:0 auto;
+				
+			}
+			i.pe {
+				font-size:20px;
+				text-align:center;
+				width:50px;
+				margin:0 auto;
+				
+			}
+			i.pe.search-close-icon.open {
+				font-size:27px;
+			}
+		}
+	}
+	
+	.top-search-input-wrap{
+	
+		.top-search-wrap {
+			position:absolute;
+			right:5vw;
+			left:auto;
+			float:none;
+			width:70vw;
+			margin:-20px auto 0;
+			.sp_search_input{
+				width:80vw;
+				margin:0 auto;
+			}
+		}
+	}
+	
+	.centered, .addspace {
+		.top-search-wrap {
+			position:absolute;
+			right:-20vw;
+			left:auto;
+			float:none;
+			width:70vw;
+			margin:-20px auto 0;
+			
+		}
+	}
+	
+	.sppb-addon-image-content {
+		.sppb-image-holder {
+			position: inherit;
+			width: 100%;
+			min-height: 350px;
+		}
+	
+		.sppb-col-sm-6, .col-sm-6 {
+			//width: 100%;
+		}
+
+	}
+	.com-sppagebuilder #sp-main-body #sp-left,
+	.com-sppagebuilder #sp-main-body #sp-right {
+		padding:0 30px;
+		margin-left:0;
+		margin-right:0;
+	}
+	.sppb-content-holder {
+		padding: 20px 0 50px 0!important;
+	}
+	
+	.sppb-addon-animated-number {
+		text-align:center;
+	}
+	
+	.flipper {
+		width:100%;
+		margin:25px auto;
+		.back {
+			.sppb-person-block {
+				.thumb,.sppb-person-information {
+					width:50%!important;
+				}
+				.sppb-person-information {
+					padding:15px 10px 15px 20px;
+						
+						.sppb-person-name {
+							font-size:160%;
+						}
+						.sppb-person-designation {
+							line-height:1.6;
+							font-size:120%;
+						}
+				}
+		    }
+			.sppb-person-introtext {
+				padding:15px 25px;
+				line-height:1.8!important;
+				font-size:100%!important;
+			}
+		}
+	}
+	.sp-comingsoon {
+		a.logo {
+			img.sp-default-logo {
+				margin:0 auto!important;
+			}
+			div.backhome {
+				display:none;
+			}
+			&:hover {
+				img.sp-default-logo {
+					text-align:center;
+					margin:0;
+				}
+			}
+		}
+	}
+	.mobile-centered {
+		text-align:center!important;
+		margin-left:auto;
+		margin-right:auto;
+		float:none!important;
+		display:table;
+	}
+	
+	
+	// Offline Page
+	.offline-container {
+		width:100vw;
+		
+		.offline-inner {
+			width:90vw;
+			border-radius:4px;
+			
+			
+			.sp-comingsoon-countdown {
+				padding:0;
+			}
+			.days,
+			.hours,
+			.minutes,
+			.seconds{
+				width: 23%;
+				padding:5px;
+			}	
+		}
+	}
+	
+}
+
+@media (max-width: @screen-xs) {
+	/* Fixed full width for products in VM Shop on "mobile" */
+	.productwrap .product {
+		width:100%;
+		display:block;
+	}
+	.offline-container {
+		
+		.offline-inner {
+			
+			#form-login {
+				width:90%;
+			}
+		}
+	}
+	
+	.cd-headline .cd-words-wrapper > b {
+		white-space:normal;
+		clear:both;
+	}
+	
+	// Timeline addon (from SPPB 2.3.5)
+	.sppb-addon-timeline .sppb-addon-timeline-wrapper .timeline-badge::before,
+    .sppb-addon-timeline .sppb-addon-timeline-wrapper .timeline-badge::after,
+    .sppb-addon-timeline .sppb-addon-timeline-wrapper::before,
+    .sppb-addon-timeline .sppb-addon-timeline-wrapper::after {
+        display: none;
+    }
+	.timeline-movement {
+		padding:0;
+		
+		&:before,
+		&:after{
+			padding:0;
+		}
+		&.odd,
+		&.even {
+			width: 100%;
+			display:table;
+			margin:0 auto;
+			left:0;
+			right:0;
+			position:relative;
+		}
+		&.odd:after {
+			position:relative;
+			margin:50px auto;
+			height: 1px;
+			top:48px;
+			bottom:auto;
+			width: 40%;
+			padding:0;
+			background-color: lighten(@major_color, 20%);
+		}
+		
+		 &.even:before {
+			background-color: lighten(@major_color, 20%);
+			bottom: 10px;
+			content: " ";
+			height: 1px;
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: auto;
+			width: 40%;
+			margin: 0 auto;
+		}
+		&.even:after{
+			display:none;
+		}
+	}
+	
+}
+
+@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
+.flex-video { padding-top: 0; }
+}

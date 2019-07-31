@@ -1,0 +1,61 @@
+
+@import "basic.less";
+@import "row.less";
+@import "row-inner.less";
+@import "column.less";
+@import "addon.less";
+@import "fontawesome.less";
+@import "modal.less";
+@import "media-modal.less";
+@import "media-manager.less";
+@import "chosen.less";
+@import "templates.less";
+@import "integrations.less";
+
+/*Sidebar*/
+@import "sidebar.less";
+
+// Blank Page
+.sp-pagebuilder-blank-page-tools {
+  padding: 200px 0;
+  text-align: center;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 -10px;
+    display: block;
+
+    >li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+  }
+}
+
+.sp-pagebuilder-admin {
+  .dropdown-menu {
+    border: 0;
+    padding: 10px;
+    border-radius: 3px;
+
+    > li {
+      > a {
+        padding: 10px;
+        font-size: 14px;
+        color: #666;
+        i {
+          margin-right: 3px;
+        }
+      }
+
+      &:hover > a,
+      &:focus > a
+      > a:hover,
+      > a:focus {
+        background-image: none;
+        background-color: @major_color;
+        border-radius: 3px;
+      }
+    }
+  }
+}

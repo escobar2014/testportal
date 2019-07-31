@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="attribs" addfieldpath="/plugins/system/helix3/fields">
+		<fieldset name="sppostformats" label="BLOG_OPTIONS">
+			<field name="spfeatured_image" type="spimage" label="Featured Image" description="BLOG_POST_FORMAT_GALLERY_DESCRIPTION" />
+			<field name="spfeatured_image_alt" type="text" label="BLOG_POST_FEATURE_IMAGE_ALTER_TEXT" description="BLOG_POST_FEATURE_IMAGE_ALTER_TEXT_DESCRIPTION" hint="Feature image alter text" showon="spfeatured_image!:" class="showon_field" />
+			<field name="post_format" type="radio" label="Post Format" default="standard" class="btn-group post-formats" description="Mega Menu Layout">
+				<option value="standard">BLOG_POST_FORMAT_STANDARD</option>
+				<option value="video">BLOG_POST_FORMAT_VIDEO</option>
+				<option value="gallery">BLOG_POST_FORMAT_GALLERY</option>
+				<option value="audio">BLOG_POST_FORMAT_AUDIO</option>
+				<option value="link">BLOG_POST_FORMAT_LINK</option>
+				<option value="quote">BLOG_POST_FORMAT_QUOTE</option>
+				<option value="status">BLOG_POST_FORMAT_STATUS</option>
+				<option value="custom">BLOG_POST_CUSTOM_FORMAT</option>
+			</field>
+			<field name="gallery" type="spgallery" label="BLOG_POST_FORMAT_GALLERY_LABEL" description="BLOG_POST_FORMAT_GALLERY_DESCRIPTION" showon="post_format:gallery" />
+			
+			<field type="spacer" name="myspacer1" hr="true" showon="post_format:gallery" />
+			
+			<field name="items_per_row" type="apslide" data-content="data-content" default="1" data-slider-range="1,6" data-slider-step="1" label="FLEX_ITEMS_PER_ROW" description="FLEX_ITEMS_PER_ROW_DESC" showon="post_format:gallery[AND]transition_effect:slide" />
+			<field name="margin_between_items" type="apslide" data-content="data-content" default="0" data-slider-range="0,30" data-slider-step="1" label="FLEX_MARGIN_BETWEEN_SLIDES" append="px" description="FLEX_MARGIN_BETWEEN_SLIDES_DESC" showon="post_format:gallery[AND]transition_effect:slide[AND]items_per_row!:1" />
+			
+			<field name="transition_effect"
+					type="radio"
+					default="slide"
+					class="btn-group btn-group-yesno"
+					label="FLEX_TRANSITION_EFFECT"
+					description="FLEX_TRANSITION_EFFECT_DESC"
+					showon="post_format:gallery"
+				>
+					<option value="slide">Slide</option>
+					<option value="fade">Fade</option>
+				</field>
+				
+			<field name="transition_duration" type="apslide" data-content="data-content" default="700" data-slider-range="400,2000" data-slider-step="100" label="FLEX_TRANSITION_DURATION" append="ms" description="FLEX_TRANSITION_DURATION_DESC" showon="post_format:gallery" />
+			
+			<field name="show_arrows"
+					type="radio"
+					default="1"
+					class="btn-group btn-group-yesno"
+					label="FLEX_SHOW_ARROWS"
+					description="FLEX_SHOW_ARROWS_DESC"
+					showon="post_format:gallery"
+				>
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+	
+				<field
+					name="arrow_icons"
+					type="list"
+					default="pixeden-angle"
+					label="FLEX_ARROW_ICON"
+					description="FLEX_ARROW_ICON_DESC"
+					showon="post_format:gallery[AND]show_arrows:1"
+				>
+				
+					<option value="pixeden-angle">Pixeden Angle</option>
+					<option value="pixeden-circle">Pixeden Circle</option>
+					<option value="fontawesome-angle">FontAwesome Angle</option>
+					<option value="fontawesome-chevron">FontAwesome Chevron</option>
+				</field>
+				
+				
+				<field name="arrow_size" type="apslide" class="child boxed_layout boxed_layout_1" data-content="data-content" default="44" data-slider-range="32,100" data-slider-step="1" label="FLEX_ARROW_SIZE" append="px" description="FLEX_ARROW_SIZE_DESC" showon="post_format:gallery[AND]show_arrows:1" />
+				<field name="arrows_color" type="colorpicker" default="" label="FLEX_ARROW_COLOR" description="FLEX_ARROW_COLOR" showon="post_format:gallery[AND]show_arrows:1" />
+				<field name="arrows_bg" type="colorpicker" default="" label="FLEX_ARROW_BACKGROUND_COLOR" description="FLEX_ARROW_BACKGROUND_COLOR_DESC" showon="post_format:gallery[AND]show_arrows:1" />
+				
+				<field
+					name="show_pager"
+					type="radio"
+					default="0"
+					class="btn-group btn-group-yesno"
+					label="FLEX_SHOW_PAGER"
+					description="FLEX_SHOW_PAGER_DESC"
+					showon="post_format:gallery"
+				>
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+			
+				<field
+					name="autoplay"
+					type="radio"
+					default="1"
+					class="btn-group"
+					label="FLEX_SHOW_AUTOPLAY"
+					description="FLEX_SHOW_AUTOPLAY_DESC"
+					showon="post_format:gallery"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				
+				<field name="auto_transition" type="apslide" data-content="data-content" default="5" data-slider-range="2,15" data-slider-step="1" label="FLEX_AUTOPLAY_DURATION" append="seconds" description="FLEX_AUTOPLAY_DURATION_DESC" showon="post_format:gallery[AND]autoplay:1" />
+				
+				<field type="spacer" name="myspacer2" hr="true" showon="post_format:gallery" />
+				
+				<field
+					name="ltr_rtl"
+					type="radio"
+					default="1"
+					class="btn-group"
+					label="FLEX_LTR_RTL"
+					description="FLEX_LTR_RTL_DESC"
+					showon="post_format:gallery"
+				>
+					<option value="1">LTR</option>
+					<option value="2">RTL</option>
+				</field>
+				
+					
+			<field name="audio" type="textarea" rows="5" label="BLOG_POST_FORMAT_AUDIO_LABEL" description="BLOG_POST_FORMAT_AUDIO_DESCRIPTION" class="input-xxlarge" filter="raw" showon="post_format:audio" />
+			<field name="video" type="url" label="BLOG_POST_FORMAT_VIDEO_LABEL" description="BLOG_POST_FORMAT_VIDEO_DESCRIPTION" showon="post_format:video" />
+			<field name="link_title" type="text" label="BLOG_POST_FORMAT_LINK_TITLE_LABEL" description="BLOG_POST_FORMAT_LINK_TITLE_DESCRIPTION" hint="Best Joomla Templates" showon="post_format:link" />
+			<field name="link_url" type="url" label="BLOG_POST_FORMAT_LINK_LABEL" description="BLOG_POST_FORMAT_LINK_DESCRIPTION" hint="http://www.joomshaper.com/joomla-templates" showon="post_format:link" />
+			<field name="quote_text" type="textarea" rows="5" label="BLOG_POST_FORMAT_QUOTE_TEXT_LABEL" description="BLOG_POST_FORMAT_QUOTE_TEXT_DESCRIPTION" class="input-xxlarge" filter="raw" showon="post_format:quote" />
+			<field name="quote_author" type="text" label="BLOG_POST_FORMAT_QUOTE_AUTHOR_LABEL" description="BLOG_POST_FORMAT_QUOTE_AUTHOR_DESCRIPTION" showon="post_format:quote" />
+			<field name="post_status" type="textarea" rows="5" label="BLOG_POST_FORMAT_STATUS_LABEL" description="BLOG_POST_FORMAT_STATUS_DESCRIPTION" class="input-xxlarge" filter="raw" showon="post_format:status" />
+			<field name="custom_post" type="textarea" rows="5" label="BLOG_POST_FORMAT_CUSTOM_LABEL" description="BLOG_POST_FORMAT_CUSTOM_DESCRIPTION" class="input-xxlarge" filter="raw" hint="You can add custom HTML content or shortcode in this field, for example shortcode to insert module: {loadmodule mod_login}. If you leave empty, it will be shown as regular article." showon="post_format:custom" />
+		</fieldset>
+	</fields>
+</form>

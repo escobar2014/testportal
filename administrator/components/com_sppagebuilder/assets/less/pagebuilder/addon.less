@@ -1,0 +1,487 @@
+.sp-pagebuilder-column {
+  .sp-pagebuilder-addons {
+    margin-top: 10px;
+
+    .sp-pagebuilder-addon {
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+
+      &:hover {
+        cursor: move;
+
+        ul {
+          li{
+            a {
+              &.sp-pagebuilder-edit-addon {
+                color: #c6e29f;
+              }
+
+              &.sp-pagebuilder-clone-addon {
+                color: #57a2e8;
+              }
+
+              &.sp-pagebuilder-delete-addon {
+                color: #f68d91;
+              }
+
+              &.sp-pagebuilder-toggle-addon {
+                color: #92278f;
+              }
+
+              &:hover {
+                color: #000;
+              }
+            }
+          }
+        }
+      }
+
+      ul li a.sp-pagebuilder-toggle-addon {
+        line-height: 20px;
+        font-size: 18px;
+      }
+
+      &.sp-pagebuilder-addon-disabled {
+        .sp-pagebuilder-addon-content {
+          min-height: 30px;
+
+          &:after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: rgba(0,0,0,0.1) url("../img/disable-pattern.png") repeat scroll 0 0;
+            z-index: 2;
+            border-radius: 3px;
+            cursor: not-allowed;
+          }
+        }
+        ul li a.sp-pagebuilder-toggle-addon {
+          font-size: 14px;
+          color: #666;
+        }
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      > div {
+        padding: 15px;
+        border-radius: 3px;
+        border: 1px solid #e5e5e5;
+      }
+
+      &.sp-pagebuilder-dragging {
+        .sp-pagebuilder-addon-tools {
+          display: none;
+        }
+
+        > div {
+          background: transparent;
+          border: 3px dashed #ccc;
+          padding: 18px 15px;
+
+          * {
+            visibility: hidden;
+          }
+        }
+      }
+
+      .sp-pagebuilder-addon-content {
+        position: relative;
+        padding-left: 26px;
+
+        img {
+          float: left;
+          width: 16px;
+          height: 16px;
+          margin-left: -26px;
+          opacity: .8;
+        }
+
+        .sp-pagebuilder-addon-title {
+          display: block;
+          color: #000;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 14px;
+          margin: 0;
+          padding: 0;
+          text-transform: capitalize;
+        }
+
+        .sp-pagebuilder-admin-label {
+          display: block;
+          margin-top: 3px;
+          font-size: 12px;
+          color: #9f9f9f;
+        }
+      }
+
+    }
+
+    &.sp-pagebuilder-no-addons {
+      min-height: 50px;
+      border-radius: 3px;
+      border: 1px solid #e5e5e5;
+
+      > div {
+        display: block;
+      }
+
+      .sp-pagebuilder-add-addon-empty {
+        display: block;
+        color: rgba(0,0,0,.1);
+        text-decoration: none;
+        font-size: 55px;
+        line-height: 55px;
+        text-align: center;
+        -webkit-transition: color 300ms;
+        transition: color 300ms;
+        padding: 30px 0;
+      }
+
+      &:hover {
+        .sp-pagebuilder-add-addon-empty {
+          color: #0072bc;
+        }
+      }
+    }
+
+    .sp-pagebuilder-section {
+      margin-bottom: 15px;
+    }
+  }
+
+  .sp-pagebuilder-addon-tools {
+    position: absolute;
+    right: 15px;
+    z-index: 4;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+
+      li {
+        margin: 0 5px;
+        display: inline-block;
+
+        a {
+          color: rgba(0, 0, 0, 0.1);
+          font-size: 14px;
+          line-height: 20px;
+          text-decoration: none;
+          -webkit-transition: color 300ms;
+          transition: color 300ms;
+        }
+      }
+    }
+  }
+}
+
+// Disabled addon
+.sp-pagebuilder-column-disabled {
+  .sp-pagebuilder-addons {
+    &.sp-pagebuilder-no-addons {
+      &:hover {
+        .sp-pagebuilder-add-addon-empty {
+          color: rgba(0,0,0,.1);
+        }
+      }
+    }
+  }
+}
+
+/* Repeatable */
+.sp-pagebuilder-grouped-items {
+  > .sp-pagebuilder-grouped-item {
+    margin-top: 3px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    .sp-pagebuilder-repeatable-toggler {
+      background: #fafafa;
+      color: #999;
+      padding: 0 60px 0 30px;
+      height: 42px;
+      border: 1px solid #e5e5e5;
+      border-radius: 3px;
+      cursor: pointer;
+      position: relative;
+
+      &.sp-pagebuilder-grouped-item-opened {
+        border-radius: 3px 3px 0 0;
+      }
+
+      > span {
+        position: absolute;
+        top: 0;
+        width: 30px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+
+        &.sp-pagebuilder-clone-grouped-item {
+          right: 30px;
+        }
+
+        > a {
+          text-decoration: none;
+          color: #999;
+          transition: color 300ms;
+          -webkit-transition: color 300ms;
+
+          &:hover,
+          &:focus,
+          &:active {
+            color: #888;
+          }
+        }
+
+        &.sp-pagebuilder-move-repeatable {
+          left: 0;
+          cursor: move;
+        }
+
+        &.sp-pagebuilder-remove-grouped-item {
+          right: 0;
+
+          > a {
+            color: #da4f49;
+
+            &:hover,
+            &:focus,
+            &:active {
+              color: #be2924;
+            }
+          }
+        }
+      }
+
+      > h4 {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        line-height: 40px;
+        font-weight: normal;
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+
+    .sp-pagebuilder-grouped-item-collapse {
+      padding: 15px;
+      border: 1px solid #e5e5e5;
+      border-top: 0;
+      border-radius: 0 0 3px 3px;
+    }
+  }
+}
+
+.sp-pagebuilder-add-grouped-item {
+  margin-bottom: 20px;
+}
+
+.sp-pagebuilder-grouped-wrap {
+  margin-bottom: 30px;
+}
+
+/* Addons List */
+.sp-pagebuilder-addons-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  > li {
+    float: left;
+    width: 20%;
+    background: #fff;
+    overflow: hidden;
+    text-align: center;
+    -webkit-transition: all 400ms;
+    transition: all 400ms;
+    text-align: center;
+    cursor: pointer;
+
+    > span {
+      display: block;
+      padding: 30px 10px;
+      border-right: 1px solid @main_bg;
+      border-bottom: 1px solid @main_bg;
+
+      > span {
+        display: block;
+
+        > img {
+          width: 38px;
+          height: 38px;
+          display: inline-block;
+          margin-bottom: 10px;
+          opacity: .3;
+          transition: opacity 300ms;
+          -webkit-transition: opacity 300ms;
+        }
+
+        > span {
+          display: block;
+        }
+      }
+    }
+
+    &:nth-child(5n+5) > span {
+      border-right: 0;
+    }
+
+    &:hover > span >span > img {
+      opacity: 1;
+    }
+  }
+}
+
+.sp-pagebuilder-modal-content {
+  >div {
+    > div {
+      &.sp-pagebuilder-modal-list-addons {
+        padding: 0;
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        .sp-pagebuilder-modal-header {
+          height: 70px;
+          line-height: 70px;
+          background: @major_color;
+          padding: 11.5px 20px;
+          position: absolute;
+          top: 0;
+          left: 240px;
+          right: 0;
+          border-bottom: 0;
+          border-radius: 0 3px 0 0;
+
+          .sp-pagebuilder-addons-search {
+            position: relative;
+            margin-left: 10px;
+
+            input[type=text].sp-pagebuilder-form-control {
+              margin: 0;
+              background: #fff;
+              border: 0;
+              padding: 8px 15px 8px 30px;
+              width: 260px;
+            }
+
+            .fa-search {
+              left: 10px;
+              position: absolute;
+              top: 50%;
+              color: #999;
+              -webkit-transform: translateY(-50%);
+              transform: translateY(-50%);
+            }
+          }
+
+          .sp-pagebuilder-close-modal {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 24px;
+            line-height: 70px;
+            width: 70px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+          }
+        }
+
+        // Sidebar
+        .sp-pagebuilder-modal-sidebar {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 240px;
+          height: 100%;
+          background-color: #fff;
+          border-radius: 4px 0 0 4px;
+          .box-shadow(~'0 0 10px rgba(0, 0, 0, 0.15)');
+
+          .sp-pagebuilder-brand {
+            background: @major_color;
+            margin: 0;
+            height: 70px;
+            line-height: 70px;
+            border-bottom: 0;
+            padding: 0 0 0 30px;
+            border-radius: 3px 0 0 0;
+            img {
+              width: 100%;
+            }
+          }
+
+          ul {
+            list-style: none;
+            padding: 30px 0;
+            margin: 0;
+
+            > li {
+              display: block;
+              margin: 0;
+
+              > a {
+                display: block;
+                padding: 15px 30px;
+                font-size: 16px;
+                font-weight: 400;
+                color: #000;
+                text-decoration: none;
+                .transition(color 300ms);
+
+                > span.sp-pagebuilder-addons-count {
+                  display: inline-block;
+                  float: right;
+                  font-size: 12px;
+                  color: #999;
+                  transition: color 300ms;
+                  -webkit-transition: color 300ms;
+                }
+              }
+
+              &.active >,
+              > a:hover,
+              > a:focus,
+              > a:active {
+                color: @major_color;
+
+                >span.sp-pagebuilder-addons-count {
+                  color: fade(@major_color, 80%);
+                }
+              }
+
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.sp-pagebuilder-modal-content >div > div.sp-pagebuilder-modal-list-addons .sp-pagebuilder-modal-body {
+  margin: 70px 0 0 240px;
+}
+
+.sp-pagebuilder-modal-content >div > div.sp-pagebuilder-modal-list-addons .sp-pagebuilder-modal-body-inner {
+  text-align: center;
+  padding: 30px;
+  min-height: 400px;
+}

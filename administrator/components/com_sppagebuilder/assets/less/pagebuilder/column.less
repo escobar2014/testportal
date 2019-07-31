@@ -1,0 +1,98 @@
+.sp-pagebuilder-columns {
+    padding: 15px 0 0;
+
+    .sp-pagebuilder-column {
+        position: relative;
+        z-index: 1;
+        margin-bottom: 20px;
+
+        .sp-pagebuilder-dragging {
+            > div {
+                border: 3px dashed #a9aaab;
+                border-radius: 3px;
+                * {
+                    visibility: hidden;
+                }
+            }
+        }
+    }
+
+    .sp-pagebuilder-column-tools {
+        position: relative;
+        z-index: 2;
+
+        .sp-pagebuilder-add-addon {
+            display: block;
+            float: right;
+            margin-right: 10px;
+            color: #666;
+            text-decoration: none;
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: @major_color;
+            }
+
+            i.pbfont{
+                display: inline-block;
+                margin-right: 5px;
+            }
+        }
+
+        .sp-pagebuilder-column-settings {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: block;
+            float: right;
+        }
+    }
+
+    .sp-pagebuilder-drag-column {
+        float: left;
+        color: #666;
+        cursor: move;
+    }
+
+    .sp-pagebuilder-column-tools-inner {
+        float: right;
+        > div {
+            > a{
+                color: #666;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .sp-pagebuilder-column-disabled {
+        .sp-pagebuilder-drag-column{
+            color: #666;
+        }
+
+        > div {
+            > .sp-pagebuilder-addons{
+                &,
+                &.sp-pagebuilder-no-addons {
+                    border: none;
+                }
+
+                position: relative;
+
+                &:after{
+                    background: rgba(193, 104, 104, 0.15) url("../img/disable-pattern.png") repeat scroll 0 0;
+                    bottom: 0;
+                    content: "";
+                    left: 0;
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    z-index: 9;
+                    border-radius: 3px;
+                    border: 1px solid #f1f1f1;
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+}

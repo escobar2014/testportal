@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.3" client="site" method="upgrade">
+	<name>SP Simple Portfolio Module</name>
+	<author>JoomShaper</author>
+	<creationDate>June 2019</creationDate>
+	<copyright>Copyright (C) 2010 - 2019 JoomShaper. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<authorEmail>support@joomshaper.com</authorEmail>
+	<authorUrl>www.joomshaper.com</authorUrl>
+	<version>1.7</version>
+	<description>Module to display latest item from SP Simple Portfolio</description>
+
+	<updateservers>
+		<server type="extension" priority="1" name="SP Simple Portfolio Module">http://www.joomshaper.com/updates/mod-sp-simple-portfolio.xml</server>
+	</updateservers>
+
+	<files>
+		<filename module="mod_spsimpleportfolio">mod_spsimpleportfolio.php</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB.mod_spsimpleportfolio.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="category_id" type="category" extension="com_spsimpleportfolio" default="" label="MOD_SPSIMPLEPORTFOLIO_CATEGORY" description="MOD_SPSIMPLEPORTFOLIO_CATEGORY">
+						<option value="">MOD_SPSIMPLEPORTFOLIO_CATEGORY_ALL</option>	
+					</field>
+					<field name="layout_type" type="list" default="default" label="MOD_SPSIMPLEPORTFOLIO_FIELD_LAYOUT_TYPES" description="MOD_SPSIMPLEPORTFOLIO_FIELD_LAYOUT_TYPES_DESC">
+						<option value="default">MOD_SPSIMPLEPORTFOLIO_FIELD_LAYOUT_DEFAULT</option>
+						<option value="gallery_space">MOD_SPSIMPLEPORTFOLIO_FIELD_LAYOUT_GALLERY_SPACE</option>	
+						<option value="gallery_nospace">MOD_SPSIMPLEPORTFOLIO_FIELD_LAYOUT_GALLERY_NOSPACE</option>	
+					</field>
+					<field name="columns" type="list" default="3" label="MOD_SPSIMPLEPORTFOLIO_FIELD_COLUMNS" description="MOD_SPSIMPLEPORTFOLIO_FIELD_COLUMNS_DESC">
+						<option value="2">MOD_SPSIMPLEPORTFOLIO_FIELD_LAYOUT_COLUMNS_2</option>	
+						<option value="3">MOD_SPSIMPLEPORTFOLIO_FIELD_LAYOUT_COLUMNS_3</option>	
+						<option value="4">MOD_SPSIMPLEPORTFOLIO_FIELD_LAYOUT_COLUMNS_4</option>	
+					</field>
+					<field name="thumbnail_type" type="list" default="masonry" label="MOD_SPSIMPLEPORTFOLIO_THUMBNAIL_SIZE">
+						<option value="masonry">MOD_SPSIMPLEPORTFOLIO_THUMBNAIL_MASONRY</option>	
+						<option value="square">MOD_SPSIMPLEPORTFOLIO_THUMBNAIL_SQUARE</option>
+						<option value="rectangular">MOD_SPSIMPLEPORTFOLIO_THUMBNAIL_RECTANGULAR</option>
+					</field>
+					<field name="popup_image" type="list" default="default" label="MOD_SPSIMPLEPORTFOLIO_FIELD_POPUP_IMAGE" description="MOD_SPSIMPLEPORTFOLIO_FIELD_POPUP_IMAGE_DESC">
+						<option value="default">MOD_SPSIMPLEPORTFOLIO_FIELD_POPUP_IMAGE_DEFAULT</option>
+						<option value="quare">MOD_SPSIMPLEPORTFOLIO_FIELD_POPUP_IMAGE_SQUARE</option>
+						<option value="rectangle">MOD_SPSIMPLEPORTFOLIO_FIELD_POPUP_IMAGE_RECTANGLE</option>
+						<option value="tower">MOD_SPSIMPLEPORTFOLIO_FIELD_POPUP_IMAGE_TOWER</option>
+					</field>
+					<field name="limit" type="number" default="12" label="MOD_SPSIMPLEPORTFOLIO_FIELD_LIMIT" description="MOD_SPSIMPLEPORTFOLIO_FIELD_LIMIT_DESC" />
+					<field name="column_bg" type="color" default="" label="SPSIMPLEPORTFOLIO_COLUMN_BACKGROUND_COLOR" description="SPSIMPLEPORTFOLIO_COLUMN_BACKGROUND_COLOR_DESC" />
+					
+					<field type="spacer" hr="true" />
+					<field name="show_filter" type="radio" class="btn-group" default="1" label="MOD_SPSIMPLEPORTFOLIO_SHOW_FILTER_BUTTONS" description="MOD_SPSIMPLEPORTFOLIO_SHOW_FILTER_BUTTONS_DESC">
+					<option value="1">JYES</option>	
+					<option value="0">JNO</option>
+					</field>
+					<field name="filter_style" type="list" default="flex" label="COM_SPSIMPLEPORTFOLIO_FIELD_FILTER_STYLE" description="COM_SPSIMPLEPORTFOLIO_FIELD_FILTER_STYLE_DESC" showon="show_filter:1">
+						<option value="simple">COM_SPSIMPLEPORTFOLIO_FIELD_FILTER_STYLE_SIMPLE</option>	
+						<option value="flex">COM_SPSIMPLEPORTFOLIO_FIELD_FILTER_STYLE_FLEX</option>
+					</field>
+					<field name="show_all_txt" type="text" label="COM_SPPORTFOLIO_SHOW_ALL_TXT_LABEL" description="COM_SPPORTFOLIO_SHOW_ALL_TXT_DESC" filter="raw" default="" showon="show_filter:1" />	
+					<field name="filter_divider" type="text" label="COM_SPPORTFOLIO_SHOW_FILTER_DIVIDER_LABEL" description="COM_SPPORTFOLIO_SHOW_FILTER_DIVIDER_LABEL_DESC" filter="raw" default="" showon="show_filter:1" />
+					<field name="filter_margin" type="number" default="" label="COM_SPPORTFOLIO_FILTER_MARGIN_LABEL" description="COM_SPPORTFOLIO_FILTER_MARGIN_DESC" showon="show_filter:1" />	
+					<field type="spacer" hr="true" />
+			<field name="show_zoom_button" type="radio" class="btn-group" default="1" label="COM_SPSIMPLEPORTFOLIO_SHOW_ZOOM_BUTTON" description="COM_SPSIMPLEPORTFOLIO_SHOW_ZOOM_BUTTON_DESC">
+					<option value="1">JYES</option>	
+					<option value="0">JNO</option>
+			</field>
+			<field name="show_view_button" type="radio" class="btn-group" default="1" label="COM_SPSIMPLEPORTFOLIO_SHOW_VIEW_BUTTON" description="COM_SPSIMPLEPORTFOLIO_SHOW_VIEW_BUTTON_DESC">
+					<option value="1">JYES</option>	
+					<option value="0">JNO</option>
+			</field>
+			<field name="show_tags" type="radio" class="btn-group" default="1" label="COM_SPSIMPLEPORTFOLIO_SHOW_TAGS" description="COM_SPSIMPLEPORTFOLIO_SHOW_TAGS_DESC">
+					<option value="1">JYES</option>	
+					<option value="0">JNO</option>
+			</field>
+			<field type="spacer" hr="true" />
+			<field name="video_width" type="number" label="COM_SPSIMPLEPORTFOLIO_VIDEO_WIDTH" description="COM_SPSIMPLEPORTFOLIO_VIDEO_WIDTH_DESC" default="700" />
+			<field name="video_height" type="number" label="COM_SPSIMPLEPORTFOLIO_VIDEO_HEIGHT" description="COM_SPSIMPLEPORTFOLIO_VIDEO_HEIGHT_DESC" default="400" />
+			<field type="spacer" hr="true" />
+
+			</fieldset>
+
+			<fieldset name="advanced">
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field name="moduleclass_sfx" type="textarea" rows="3" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

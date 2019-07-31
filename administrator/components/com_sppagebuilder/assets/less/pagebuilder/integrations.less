@@ -1,0 +1,117 @@
+.sp-pagebuilder-integrations {
+
+  margin-top: 20px;
+  margin-right: 20px;
+  padding: 0;
+  margin-left: 5px;
+
+  .sp-pagebuilder-integrations-list {
+    list-style: none;
+    padding: 0;
+    margin: -10px;
+
+    >li {
+      display: block;
+      width: 25%;
+      float: left;
+      >div {
+        padding: 10px;
+        >div {
+          position: relative;
+          background: #fff;
+          border-radius: 4px;
+          text-align: center;
+
+          img {
+            height: 120px;
+            display: inline-block;
+            margin: 50px 0;
+          }
+
+          span {
+            border-top: 1px solid #e5e5e5;
+            position: relative;
+            display: block;
+            padding: 15px 10px;
+            background: #fff;
+            color: #000;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 0 0 4px 4px;
+            text-align: left;
+
+            >.fa {
+              display: none;
+            }
+
+            .sp-pagebuilder-btns {
+              display: block;
+              position: absolute;
+              top: 50%;
+              right: 10px;
+              -webkit-transform: translateY(-50%);
+              transform: translateY(-50%);
+
+              a {
+                display: none;
+                float: left;
+                margin-left: 10px;
+              }
+            }
+          }
+        }
+      }
+
+      &.available {
+        .sp-pagebuilder-btn-install {
+          display: block;
+        }
+      }
+
+      &.installed {
+        .sp-pagebuilder-btn-enable {
+          display: block;
+        }
+        .sp-pagebuilder-btn-uninstall {
+          display: block;
+        }
+      }
+
+      &.enabled {
+        .sp-pagebuilder-btn-disable {
+          display: block;
+        }
+        .sp-pagebuilder-btn-uninstall {
+          display: block;
+        }
+
+        >div {
+          >div {
+            span {
+              color: #fff;
+              background: @major_color;
+              border-top-color: @major_color;
+              >.fa {
+                display: inline-block;
+                margin-right: 5px;
+              }
+            }
+          }
+        }
+
+        .sp-pagebuilder-btn {
+          &.sp-pagebuilder-btn-default {
+            background: rgba(0, 0, 0, .5);
+
+            &:hover,
+            &:active,
+            &:focus {
+              background: #fff;
+              color: #000;
+            }
+          }
+        }
+      }
+    }
+  }
+}

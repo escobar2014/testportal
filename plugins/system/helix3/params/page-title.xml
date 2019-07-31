@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="params" addfieldpath="/plugins/system/helix3/fields">
+	<fieldset name="pagetitle" label="HELIX_PAGE_TITLE">		
+					
+		<field name="enable_page_title" type="radio" class="btn-group" default="0" label="ENABLE_PAGE_TITLE" description="ENABLE_PAGE_TITLE_DESC">
+			<option value="1">HELIX_YES</option>
+			<option value="0">HELIX_NO</option>
+		</field>
+		
+		<field name="page_title_align" type="radio" class="btn-group" default="left" label="PAGE_TITLE_ALIGN" description="PAGE_TITLE_ALIGN_DESC" showon="enable_page_title:1">
+			<option value="left">HELIX_LEFT</option>
+			<option value="center">HELIX_CENTER</option>
+			<option value="right">HELIX_RIGHT</option>
+		</field>	
+		<field name="page_title_size" type="number" default="32" label="PAGE_TITLE_SIZE" description="PAGE_TITLE_SIZE_DESC" min="22" max="55" step="1" hint="32" validate="number" showon="enable_page_title:1" />
+		<field name="page_title_height" type="number" default="170" label="PAGE_TITLE_HEIGHT" description="PAGE_TITLE_HEIGHT_DESC" min="120" max="540" step="1" hint="170" showon="enable_page_title:1" />
+		<field name="enable_page_title_parallax" type="radio" class="btn-group" default="0" label="ENABLE_PAGE_TITLE_PARALLAX" description="ENABLE_PAGE_TITLE_PARALLAX_DESC" showon="enable_page_title:1">
+			<option value="1">HELIX_YES</option>
+			<option value="0">HELIX_NO</option>
+		</field>
+		<field name="include_breadcrumbs" type="radio" class="btn-group" default="1" label="INCLUDE_BREADCRUMBS" description="INCLUDE_BREADCRUMBS_DESC" showon="enable_page_title:1">
+			<option value="1">HELIX_YES</option>
+			<option value="0">HELIX_NO</option>
+		</field>	
+		<field name="page_title_alt" type="text" default="" label="PAGE_TITLE_ALT" description="PAGE_TITLE_ALT_DESC" showon="enable_page_title:1" />
+		<field name="page_subtitle" type="text" default="" label="PAGE_SUBTITLE" description="PAGE_SUBTITLE_DESC" showon="enable_page_title:1" />
+		<field name="page_title_text_color" type="color" label="PAGE_TEXT_COLOR" description="PAGE_TEXT_COLOR_DESC" showon="enable_page_title:1" />
+		<field name="page_title_bg_color" type="color" label="PAGE_BACKGROUND_COLOR" description="PAGE_BACKGROUND_COLOR_DESC" showon="enable_page_title:1" />
+		<field type="spacer" name="page_title_bg_spacer" hr="true" />
+		<field name="page_title_bg_image" type="media" label="PAGE_BACKGROUND_IMAGE" description="PAGE_BACKGROUND_IMAGE_DESC" showon="enable_page_title:1" />
+		
+		<field name="page_title_bg_image_repeat" type="list" default="no-repeat" label="PAGE_TITLE_BG_IMG_REPEAT" description="PAGE_TITLE_BG_IMG_REPEAT_DESC" showon="enable_page_title:1">
+                    <option value="no-repeat">PAGE_TITLE_BG_IMG_REPEAT_NO</option>
+                    <option value="repeat">PAGE_TITLE_BG_IMG_REPEAT_ALL</option>
+                    <option value="repeat-x">PAGE_TITLE_BG_IMG_REPEAT_HORIZ</option>
+                    <option value="repeat-y">PAGE_TITLE_BG_IMG_REPEAT_VERTI</option>
+                    <option value="inherit">PAGE_TITLE_BG_IMG_REPEAT_INHERIT</option>
+                </field>
+                <field name="page_title_bg_image_size" type="radio" class="btn-group" default="cover" label="PAGE_TITLE_BG_IMG_SIZE" description="PAGE_TITLE_BG_IMG_SIZE_DESC" showon="enable_page_title:1">
+                    <option value="cover">PAGE_TITLE_BG_IMG_SIZE_COVER</option>
+                    <option value="contain">PAGE_TITLE_BG_IMG_SIZE_CONTAIN</option>
+                    <option value="inherit">PAGE_TITLE_BG_IMG_SIZE_INHERIT</option>
+                </field>
+                <field name="page_title_bg_image_attachment" type="radio" class="btn-group" default="fixed" label="PAGE_TITLE_BG_IMG_ATTACHMENT" description="PAGE_TITLE_BG_IMG_ATTACHMENT_DESC" showon="enable_page_title:1">
+                    <option value="fixed">PAGE_TITLE_BG_IMG_ATTACHMENT_FIXED</option>
+                    <option value="scroll">PAGE_TITLE_BG_IMG_ATTACHMENT_SCROLL</option>
+                    <option value="inherit">PAGE_TITLE_BG_IMG_ATTACHMENT_INHERIT</option>
+                </field>
+				<field name="page_title_bg_image_hor_position" type="apslide" default="50" data-content="data-content" data-slider-range="0,100" data-slider-step="5" append="%" label="PAGE_TITLE_BG_HORIZON_POSITION" description="PAGE_TITLE_BG_HORIZON_POSITION_DESC" showon="enable_page_title:1" />
+				<field name="page_title_bg_image_vert_position" type="apslide" data-content="data-content" default="50" data-slider-range="0,100" data-slider-step="5" append="%" label="PAGE_TITLE_BG_VERTICAL_POSITION" description="PAGE_TITLE_BG_VERTICAL_POSITION_DESC" showon="enable_page_title:1" />
+				
+    </fieldset>
+	</fields>
+</form>

@@ -1,0 +1,194 @@
+//
+// Responsive: Utility classes
+// --------------------------------------------------
+
+
+// IE10 in Windows (Phone) 8
+//
+// Support for responsive views via media queries is kind of borked in IE10, for
+// Surface/desktop in split view and for Windows Phone 8. This particular fix
+// must be accompanied by a snippet of JavaScript to sniff the user agent and
+// apply some conditional CSS to *only* the Surface/desktop Windows 8. Look at
+// our Getting Started page for more information on this bug.
+//
+// For more information, see the following:
+//
+// Issue: https://github.com/twbs/bootstrap/issues/10497
+// Docs: http://getbootstrap.com/getting-started/#support-ie10-width
+// Source: http://timkadlec.com/2013/01/windows-phone-8-and-device-width/
+// Source: http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
+
+@-ms-viewport {
+  width: device-width;
+}
+
+
+// Visibility utilities
+// Note: Deprecated .visible-xs, .visible-sm, .visible-md, and .visible-lg as of v3.2.0
+.sp-pagebuilder-visible-xs,
+.sp-pagebuilder-visible-sm,
+.sp-pagebuilder-visible-md,
+.sp-pagebuilder-lg {
+  .responsive-invisibility();
+}
+
+.sp-pagebuilder-xs-block,
+.sp-pagebuilder-xs-inline,
+.sp-pagebuilder-xs-inline-block,
+.sp-pagebuilder-sm-block,
+.sp-pagebuilder-sm-inline,
+.sp-pagebuilder-sm-inline-block,
+.sp-pagebuilder-md-block,
+.sp-pagebuilder-md-inline,
+.sp-pagebuilder-md-inline-block,
+.sp-pagebuilder-lg-block,
+.sp-pagebuilder-lg-inline,
+.sp-pagebuilder-lg-inline-block {
+  display: none !important;
+}
+
+.sp-pagebuilder-xs {
+  @media (max-width: @screen-xs-max) {
+    .responsive-visibility();
+  }
+}
+.sp-pagebuilder-xs-block {
+  @media (max-width: @screen-xs-max) {
+    display: block !important;
+  }
+}
+.sp-pagebuilder-xs-inline {
+  @media (max-width: @screen-xs-max) {
+    display: inline !important;
+  }
+}
+.sp-pagebuilder-xs-inline-block {
+  @media (max-width: @screen-xs-max) {
+    display: inline-block !important;
+  }
+}
+
+.sp-pagebuilder-sm {
+  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    .responsive-visibility();
+  }
+}
+.sp-pagebuilder-sm-block {
+  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    display: block !important;
+  }
+}
+.sp-pagebuilder-sm-inline {
+  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    display: inline !important;
+  }
+}
+.sp-pagebuilder-sm-inline-block {
+  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    display: inline-block !important;
+  }
+}
+
+.sp-pagebuilder-md {
+  @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    .responsive-visibility();
+  }
+}
+.sp-pagebuilder-md-block {
+  @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    display: block !important;
+  }
+}
+.sp-pagebuilder-md-inline {
+  @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    display: inline !important;
+  }
+}
+.sp-pagebuilder-md-inline-block {
+  @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    display: inline-block !important;
+  }
+}
+
+.sp-pagebuilder-lg {
+  @media (min-width: @screen-lg-min) {
+    .responsive-visibility();
+  }
+}
+.sp-pagebuilder-lg-block {
+  @media (min-width: @screen-lg-min) {
+    display: block !important;
+  }
+}
+.sp-pagebuilder-lg-inline {
+  @media (min-width: @screen-lg-min) {
+    display: inline !important;
+  }
+}
+.sp-pagebuilder-lg-inline-block {
+  @media (min-width: @screen-lg-min) {
+    display: inline-block !important;
+  }
+}
+
+.sp-pagebuilder-hidden-xs {
+  @media (max-width: @screen-xs-max) {
+    .responsive-invisibility();
+  }
+}
+.sp-pagebuilder-hidden-sm {
+  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    .responsive-invisibility();
+  }
+}
+.sp-pagebuilder-hidden-md {
+  @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    .responsive-invisibility();
+  }
+}
+.sp-pagebuilder-hidden-lg {
+  @media (min-width: @screen-lg-min) {
+    .responsive-invisibility();
+  }
+}
+
+
+// Print utilities
+//
+// Media queries are placed on the inside to be mixin-friendly.
+
+// Note: Deprecated .sp-pagebuilder-print as of v3.2.0
+.sp-pagebuilder-print {
+  .responsive-invisibility();
+
+  @media print {
+    .responsive-visibility();
+  }
+}
+.sp-pagebuilder-print-block {
+  display: none !important;
+
+  @media print {
+    display: block !important;
+  }
+}
+.sp-pagebuilder-print-inline {
+  display: none !important;
+
+  @media print {
+    display: inline !important;
+  }
+}
+.sp-pagebuilder-print-inline-block {
+  display: none !important;
+
+  @media print {
+    display: inline-block !important;
+  }
+}
+
+.sp-pagebuilder-hidden-print {
+  @media print {
+    .responsive-invisibility();
+  }
+}

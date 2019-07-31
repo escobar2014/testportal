@@ -1,0 +1,103 @@
+
+/* Style 1 */
+caption {
+    background:#aaa;
+	margin:0;	
+}
+.style1 .sp-thumbnails  {
+    border: none;
+	margin:7px auto 0;	   
+}
+.style1 .sp-thumbnails .sp-thumbnail-container {
+	margin:5px 3px;
+	position: relative;
+	cursor: pointer;
+	display: block;
+	overflow: hidden;
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.style1 .sp-thumbnails .sp-thumbnail {
+	left: 0;
+	margin:0 auto;
+	text-align:center;
+	padding: 4px 12px 3px;
+	background:rgba(0,0,0,.02);
+	-webkit-transition:all .25s ease;
+	-moz-transition:all .25s ease;
+	-o-transition:all .25s ease;
+	transition:all .25s ease;
+	width: 100%;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.style1 .sp-thumbnails .sp-selected-thumbnail .sp-thumbnail {
+	background:rgba(0,0,0,.07);
+	color: #333;
+}
+.style1 .sp-thumbnail-title {
+	font-size:18px;
+	line-height:24px;
+	margin:0 auto;
+}
+.style1 .sp-thumbnail-description {
+	font-size: 14px;
+	line-height:21px;
+	margin:5px auto;
+}
+.style1 .sp-bottom-thumbnails .sp-thumbnail-container {
+	top:-3px;
+}
+.style1 .sp-bottom-thumbnails.sp-has-pointer .sp-thumbnail {
+	top: 18px;
+	margin-top: 0;
+	-webkit-transition:all .25s ease;
+	-moz-transition:all .25s ease;
+	-o-transition:all .25s ease;
+	transition:all .25s ease;
+}
+.style1 .sp-bottom-thumbnails.sp-has-pointer .sp-selected-thumbnail {
+	-webkit-transition:all .25s ease;
+	-moz-transition:all .25s ease;
+	-o-transition:all .25s ease;
+	transition:all .25s ease;
+}
+.style1 .sp-bottom-thumbnails.sp-has-pointer .sp-selected-thumbnail:before {
+	content: '';
+	position: absolute;
+	width:100%;
+	border-bottom: 5px solid #aaa;
+	top: 0;
+	left:0;
+	margin-top: 13px;
+}
+.style1 .sp-bottom-thumbnails.sp-has-pointer .sp-selected-thumbnail:after {
+	position: absolute;
+	font-size: 15px;
+	line-height:25px;
+	color: #aaa;
+	left: 50%;
+	top: -3px;
+	margin-left: -6px;
+}
+
+@media (max-width: 480px) {
+	.style1 .sp-thumbnail {
+		text-align: center;	
+	}
+	.style1 .sp-thumbnail-text h4.sp-thumbnail-title {
+		line-height:17px;margin:1px auto;
+	}
+	.style1 .sp-thumbnail-image-container {
+		display: none;
+	}
+	.style1 .sp-thumbnail-title {
+		font-size: 12px;
+		text-transform: uppercase;
+	}
+	.style1 .sp-thumbnail-description {
+		display: none;
+	}
+}
+

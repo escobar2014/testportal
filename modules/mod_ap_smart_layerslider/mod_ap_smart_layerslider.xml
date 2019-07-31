@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.3" client="site" method="upgrade">
+    <name>AP Smart LayerSlider</name>
+    <creationDate>March 2019</creationDate>
+    <author>Aplikko.com</author>
+	<copyright>Copyright @ 2019 Aplikko.com. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>contact@aplikko.com</authorEmail>
+    <authorUrl>http://www.aplikko.com</authorUrl>
+    <version>3.6</version>
+	<description></description>
+	<scriptfile>admin/installscript.php</scriptfile>
+     <files>
+        <filename module="mod_ap_smart_layerslider">mod_ap_smart_layerslider.php</filename>
+		<folder>admin</folder>
+		<folder>assets</folder>
+        <folder>tmpl</folder>
+        <filename>helper.php</filename>
+    </files>
+	<languages>
+		<language tag="en-GB">en-GB.mod_ap_smart_layerslider.ini</language>
+	</languages>
+	<config>
+	   <fields name="params">
+	   
+	   <!-- Module (Basic) -->	
+		<fieldset name="basic" addfieldpath="/modules/mod_ap_smart_layerslider/admin">
+		  <field type="description" />
+		</fieldset>
+
+        <!-- Source -->	
+		<fieldset name="source">    
+			<field name="display_form" type="apradio" class="parent source btn-group" default="folder_image" label="APSL_DISPLAY_FORM_LABEL" description="APSL_DISPLAY_FORM_DESC" >
+				<option value="joomla_content"><![CDATA[<i class="fa fa-joomla"></i> Joomla Content]]></option>
+				<option value="k2"><![CDATA[<img src="../modules/mod_ap_smart_layerslider/admin/images/k2-logo.svg" /> K2 Content]]></option>
+				<option value="folder_image"><![CDATA[<i class="fa fa-folder-open"></i> Image Folder]]></option>		
+			</field>
+			<field type="spacer" />
+			<field name="catid" type="category" class="child source source_joomla_content" extension="com_content" multiple="true" size="10" default="" label="APSL_CATEGORY_LABEL" description="APSL_CATEGORY_DESC" >
+				<option value="">JOPTION_ALL_CATEGORIES</option>
+			</field>
+			<field name="k2catid" type="k2category" class="child source source_k2" multiple="true" size="10" default="" label="APSL_K2_CATEGORY_LABEL"
+				description="APSL_K2_CATEGORY_DESC" >
+				<option value="">JOPTION_ALL_CATEGORIES</option>
+			</field>
+			<field name="sort_order_field" type="list" default="order" class="child source source_joomla_content source_k2" label="APSL_SORT_ORDER_BY_LABEL" description="APSL_SORT_ORDER_BY_DESC">
+				<option value="id">APSL_SORT_DEFAULT</option>
+				<option value="date">APSL_SORT_DATE</option>
+				<option value="rdate">APSL_SORT_RDATE</option>
+				<option value="publish_up">APSL_SORT_PUBLISH_UP</option>
+				<option value="alpha">APSL_SORT_ALPHA</option>
+				<option value="ralpha">APSL_SORT_RALPHA</option>
+				<option value="order">APSL_SORT_ORDER</option>
+				<option value="rorder">APSL_SORT_RORDER</option>
+				<option value="hits">APSL_SORT_HITS</option>
+				<option value="modified">APSL_SORT_MODIFIED</option>
+				<option value="rand">APSL_SORT_RAND</option>
+			</field>
+			<field name="count" type="text" default="5" class="child source source_joomla_content source_k2" append="LIMIT_ITEMS_APPEND" data-content="LIMIT_ITEM_DATA_CONTENT" label="LIMIT_ITEM_LABEL" description="" />
+	
+			<!-- ApUploader -->	
+			<field name="apuploader" type="apuploader" label="" description=""/>
+			<field name="path_folder" type="apimagefolder" class="child source source_folder_image" directory="images" append="APSL_PATH_TO_FOLDER_APPEND" data-content="APSL_PATH_TO_FOLDER_DATA_CONTENT" label="APSL_PATH_TO_FOLDER_LABEL" description="APSL_PATH_TO_FOLDER_DESC" />
+		</fieldset>
+		  
+		<!-- Item Settings -->		
+		<fieldset name="slider_settings">
+			<field name="theme" type="themeselect" hide_default="true" default="1" class="child source label-img" label="AP_THEME_SELECT_LABEL" description="AP_THEME_SELECT_DESC">
+				<option value="1">Style 1</option>
+				<option value="2">Style 2</option>
+				<option value="3">Style 3</option>
+				<option value="4">Style 4</option>
+				<option value="5">Style 5</option>
+			</field>
+			<field type="spacer" />	
+			<!-- Slide Options -->
+			<field type="apspacer" label="APSL_SLIDE_OPTIONS" />
+			<field name="image_width" type="aptext" default="1170" append="px" label="APSL_SLIDE_WIDTH_LABEL" description="APSL_SLIDE_WIDTH_DESC" />
+			<field name="image_height" type="aptext" default="400" append="px" label="APSL_SLIDE_HEIGHT_LABEL" description="APSL_SLIDE_HEIGHT_DESC" />
+			<field name="mainimage_mode" type="aplist" default="crop" class="parent image_mode" label="APSL_IMAGE_MODE_LABEL" description="APSL_IMAGE_MODE_DESC">
+				<option value="none">JNO</option>
+				<option value="resize">MOD_AP_RESIZE</option>
+				<option value="crop">MOD_AP_CROP</option>
+			</field>
+			<field name="use_ratio" type="radio" default="1" class="child image_mode image_mode_resize btn-group" label="APSL_USE_RATIO_LABEL" description="APSL_USE_RATIO_DESC">
+				 <option value="1">JYES</option>
+				 <option value="0">JNO</option>
+			</field>					
+			
+			<field type="spacer" />	
+			<field name="forceSize" type="radio" label="APSL_FORCE_SIZE_LABEL" default="none" description="APSL_FORCE_SIZE_DESC" class="btn-group radios-align">
+				 <option value="fullWidth">Full Width</option>
+				 <option value="fullWindow">Full Window</option>
+				 <option value="none">None</option>
+			</field>
+			<field name="visibleSize" type="radio" label="APSL_VISIBLE_SIZE_LABEL" default="auto" description="APSL_VISIBLE_SIZE_DESC" class="btn-group radios-align">
+				 <option value="auto">Auto</option>
+				 <option value="100%">100%</option>
+			</field>
+			<field name="slideDistance" type="aptext" default="10" append="px" label="APSL_SLIDE_DISTANCE_LABEL" description="APSL_SLIDE_DISTANCE_DESC" />
+			<field type="spacer" />	
+			<field name="responsive" type="radio" class="btn-group" default="1" label="APSL_RESPONSIVE_LABEL" description="APSL_RESPONSIVE_DESC">
+				 <option value="1">JYES</option>
+				 <option value="0">JNO</option>
+			</field>
+			<field name="imageScaleMode" type="radio" label="APSL_IMAGE_SCALE_MODE_LABEL" default="cover" description="APSL_IMAGE_SCALE_MODE_DESC" class="btn-group radios-align">
+				 <option value="cover">Cover</option>
+				 <option value="contain">Contain</option>
+				 <option value="exact">Exact</option>
+				 <option value="none">None</option>
+			</field>
+			<field name="autoHeight" type="radio" class="btn-group" label="APSL_AUTO_HEIGHT_LABEL" default="0" description="APSL_AUTO_HEIGHT_DESC"> 				 				 
+				 <option value="1">JYES</option>
+				 <option value="0">JNO</option>
+			</field>
+			<field name="autoScaleLayers" type="radio" class="btn-group" default="1" label="APSL_AUTO_SCALE_LABEL" description="APSL_AUTO_SCALE_DESC"> 				 				 
+				 <option value="1">JYES</option>
+				 <option value="0">JNO</option>
+			</field>
+			<field name="waitForLayers" type="radio" default="0" class="btn-group" label="APSL_WAIT_FOR_LAYERS_LABEL" description="APSL_WAIT_FOR_LAYERS_DESC">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>	
+			<field name="orientation" type="radio" label="APSL_ORIENTATION_LABEL" default="horizontal" description="APSL_ORIENTATION_DESC" class="btn-group radios-align">
+				 <option value="horizontal"><![CDATA[<i class="fa fa-arrows-h"></i>]]> Horizontal</option>
+				 <option value="vertical">Vertical <![CDATA[<i class="fa fa-arrows-v"></i>]]></option>
+			</field>
+			<field name="loop" type="radio" default="1" class="btn-group" label="APSL_LOOP_LABEL" description="APSL_LOOP_DESC">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+			<field name="shuffle" type="radio" default="0" class="btn-group" label="APSL_SHUFFLE_LABEL" description="APSL_SHUFFLE_DESC">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+			
+			<!-- Fullscreen-->
+			<field name="fullScreen" type="radio" default="0" class="parent fullscreen btn-group" label="APSL_FULLSCREEN_LABEL" description="APSL_FULLSCREEN_DESC">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+			<field name="fullscreen_button_color" type="color" class="child fullscreen fullscreen_1" default="#000000" label="Fullscreen button color" description="Custom color for Fullscreen button" />	
+			
+			<!-- Fade Effect -->					
+			<field type="spacer" />
+			<field name="fadeEffect" type="radio" class="parent fade_effect btn-group" default="0" label="APSL_FADE_LABEL" description="APSL_FADE_DESC">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+			<field name="fadeOutPreviousSlide" type="radio" default="1" class="child fade_effect fade_effect_1 btn-group" label="APSL_FADE_PREVIOUS_SLIDE_LABEL" description="APSL_FADE_PREVIOUS_SLIDE_DESC">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+			<field name="fadeDuration" type="aptext" class="child fade_effect fade_effect_1" default="500" append="INTERVAL_APPEND" data-content="FADE_DURATION_DATA" label="FADE_DURATION_LABEL" description="FADE_DURATION_DESC" />
+			
+			<!-- Autoplay -->
+			<field type="spacer" />
+			<field name="autoplay" type="radio" class="parent autoplay btn-group" default="0" label="APSL_AUTOPLAY_LABEL" description="APSL_AUTOPLAY_DESC">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+			<field name="autoplayDelay" type="aptext" class="child autoplay autoplay_1" default="5000" append="INTERVAL_APPEND" data-content="APSL_AUTOPLAY_DELAY_DATA" label="INTERVAL" description="APSL_AUTOPLAY_DELAY_DESC" />
+			<field name="autoplayOnHover" type="radio" default="pause" label="APSL_AUTOPLAY_ON_HOVER_LABEL" description="APSL_AUTOPLAY_ON_HOVER_DESC" class="child autoplay autoplay_1 btn-group radios-align">
+				 <option value="pause">Pause</option>
+				 <option value="stop">Stop</option>
+				 <option value="none">None</option>
+			</field>	
+			
+			<!-- Thumbnail Settings -->
+			<field type="apspacer" label="APSL_THUMBNAIL_SETTINGS" />
+
+			<field name="show_thumbnails" type="radio" class="parent thumbnails btn-group" label="APSL_THUMBNAILS_LABEL" default="0" description="APSL_THUMBNAILS_DESC"> 				 				 
+				 <option value="1">JYES</option>
+				 <option value="0">JNO</option>
+			</field>
+			<field name="thumbnailWidth" type="aptext" class="child thumbnails thumbnails_1" default="120" append="px" label="APSL_THUMBNAIL_WIDTH_LABEL" description="APSL_THUMBNAIL_WIDTH_DESC" />
+			<field name="thumbnailHeight" type="aptext" class="child thumbnails thumbnails_1" default="80" append="px" label="APSL_THUMBNAIL_HEIGHT_LABEL" description="APSL_THUMBNAIL_HEIGHT_DESC" />
+			<field name="thumbnailtxt_align" type="radio" class="child thumbnails thumbnails_1 btn-group text-align" default="left" label="APSL_THUMBNAIL_TXT_ALIGN_LABEL" description="APSL_THUMBNAIL_TXT_ALIGN_DESC">
+				<option value="left"><![CDATA[<i class="fa fa-align-left hasTooltip" title="Align Left"></i>]]></option>
+				<option value="center"><![CDATA[<i class="fa fa-align-center hasTooltip" title="Align Center"></i>]]></option>
+				<option value="right"><![CDATA[<i class="fa fa-align-right hasTooltip" title="Align Right"></i>]]></option>
+			</field>
+			<field name="show_thumbnail_description" type="radio" class="child thumbnails thumbnails_1 btn-group" default="1" label="APSL_SHOW_THUMBNAIL_DESCRIPTION_LABEL" description="APSL_SHOW_THUMBNAIL_DESCRIPTION_DESC">
+				 <option value="1">JYES</option>
+				 <option value="0">JNO</option>
+			</field>
+			<field name="thumbnail_description_max_chars" type="text" class="child thumbnails thumbnails_1" default="50" label="APSL_THUMBNAIL_DESCRIPTION_MAXCHARS_LABEL" description="APSL_THUMBNAIL_DESCRIPTION_MAXCHARS_DESC" />
+			<field name="selected_thumbnail_txt_color" type="color" class="child thumbnails thumbnails_1" default="" label="APSL_SELECTED_THUMBNAIL_TXTCOLOR_LABEL" description="APSL_SELECTED_THUMBNAIL_TXTCOLOR_DESC" />
+			<field name="selected_thumbnail_backg_color" type="apcolorrgba" class="child thumbnails thumbnails_1" default="" label="APSL_SELECTED_THUMBNAIL_BCKG_LABEL" description="APSL_SELECTED_THUMBNAIL_BCKG_DESC" />
+			<field name="thumbnailsPosition" type="radio" default="bottom" label="APSL_THUMBNAIL_POSITION_LABEL" description="APSL_THUMBNAIL_POSITION_DESC" class="child thumbnails thumbnails_1 btn-group radios-align">
+				 <option value="top">Top</option>
+				 <option value="right">Right</option>
+				 <option value="bottom">Bottom</option>
+				 <option value="left">Left</option>
+			</field>
+			<field name="thumbnailPointer" type="radio" class="child thumbnails thumbnails_1 btn-group" label="APSL_THUMBNAIL_POINTER_LABEL" default="0" description="APSL_THUMBNAIL_POINTER_DESC"> 				 				
+				 <option value="1">JYES</option>
+				 <option value="0">JNO</option>
+			</field>
+			<field name="thumbnailPointer_color" type="color" class="child thumbnails thumbnails_1" default="" label="APSL_THUMBNAIL_POINTER_COLOR_LABEL" description="APSL_THUMBNAIL_POINTER_COLOR_DESC" />
+			<field name="thumbnailArrows" type="radio" class="child thumbnails thumbnails_1 btn-group" label="APSL_THUMBNAIL_ARROWS_LABEL" default="0" description="APSL_THUMBNAIL_ARROWS_DESC"> 				 				
+				 <option value="1">JYES</option>
+				 <option value="0">JNO</option>
+			</field>
+
+			<!-- Arrows -->
+			<field type="apspacer" label="APSL_ARROWS" />
+			<field name="show_arrows" type="radio" class="parent arrows btn-group" label="APSL_SHOW_ARROWS_LABEL" default="1" description="APSL_SHOW_ARROWS_DESC">
+				 <option value="1">JYES</option>
+				 <option value="0">JNO</option>
+			</field>
+			<field name="arrows_size" type="aptext" class="child arrows arrows_1" default="50" append="px" label="APSL_ARROWS_SIZE_LABEL" description="APSL_ARROWS_SIZE_DESC" />
+			<field name="arrows_backg_color" type="apcolorrgba" class="child arrows arrows_1" default="" label="APSL_ARROWS_BACKG_COLOR_LABEL" description="APSL_ARROWS_BACKG_COLOR_DESC" />
+			<field name="arrows_color" type="apcolorrgba" class="child arrows arrows_1" default="" label="APSL_ARROWS_COLOR_LABEL" description="APSL_ARROWS_COLOR_DESC" />	
+			
+			<!-- Buttons -->
+			<field type="apspacer" label="APSL_BUTTONS" />		
+			<field name="show_buttons" type="radio" class="parent buttons btn-group" label="APSL_SHOW_BUTTONS_LABEL" default="1" description="APSL_SHOW_BUTTONS_DESC"> 				 				 
+				 <option value="1">JYES</option>
+				 <option value="0">JNO</option>
+			</field>
+			<field name="buttons_color" type="apcolorrgba" class="child buttons buttons_1" default="" label="APSL_BUTTONS_COLOR_LABEL" description="APSL_BUTTONS_COLOR_DESC" />	
+			
+			<!-- Captions -->	
+			<field type="apspacer" label="APSL_CAPTIONS" />
+			<field name="display_caption" type="radio" default="0" class="parent display_captions btn-group" label="APSL_DISPLAY_CAPTIONS_LABEL" description="APSL_DISPLAY_CAPTIONS_DESC">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>	
+			<field name="captiontxt_align" type="radio" default="center" label="APSL_CAPTION_TXT_ALIGN_LABEL" description="APSL_CAPTION_TXT_ALIGN_DESC" class="child display_captions display_captions_1 btn-group text-align">
+				<option value="left"><![CDATA[<i class="fa fa-align-left hasTooltip" title="Align Left"></i>]]></option>
+				<option value="center"><![CDATA[<i class="fa fa-align-center hasTooltip" title="Align Center"></i>]]></option>
+				<option value="right"><![CDATA[<i class="fa fa-align-right hasTooltip" title="Align Right"></i>]]></option>
+			</field>	
+			<!-- Caption max characters -->
+			<field name="description_max_chars" type="text" class="child display_captions display_captions_1" default="70" label="APSL_CAPTION_MAX_CHARS_LABEL" description="APSL_CAPTION_MAX_CHARS_DESC" />
+			
+			<!-- Video Options -->
+			<field type="apspacer" name="videoapspacer" class="hideshowspacer" label="APSL_VIDEO_LABEL" description="APSL_VIDEO_DESC" />
+			<field name="load_videojs" type="radio" class="btn-group" label="APSL_LOAD_VIDEOJS_LABEL" default="0" description="APSL_LOAD_VIDEOJS_DESC"> 				 				 
+				 <option value="1">JYES</option>
+				 <option value="0">JNO</option>
+			</field>
+			<field type="spacer" />	
+			<field name="reachVideoAction" type="radio" default="none" label="APSL_REACH_VIDEO_ACTION_LABEL" description="APSL_REACH_VIDEO_ACTION_DESC" class="btn-group radios-align">
+				 <option value="playVideo">Play Video</option>
+				 <option value="none">None</option>
+			</field>
+			<field name="leaveVideoAction" type="radio" default="pauseVideo" label="APSL_LEAVE_VIDEO_ACTION_LABEL" description="APSL_LEAVE_VIDEO_ACTION_DESC" class="btn-group radios-align">
+				 <option value="stopVideo">Stop Video</option>
+				 <option value="pauseVideo">Pause Video</option>
+				 <option value="removeVideo">Remove Video</option>
+				 <option value="none">None</option>
+			</field>
+			<field name="playVideoAction" type="radio" default="stopAutoplay" label="APSL_PLAY_VIDEO_ACTION_LABEL" description="APSL_PLAY_VIDEO_ACTION_DESC" class="btn-group radios-align">
+				 <option value="stopAutoplay">Stop Autoplay</option>
+				 <option value="none">None</option>
+			</field>
+			<field name="pauseVideoAction" type="radio" default="none" label="APSL_PAUSE_VIDEO_ACTION_LABEL" description="APSL_PAUSE_VIDEO_ACTION_DESC" class="btn-group radios-align">
+				 <option value="startAutoplay">Start Autoplay</option>
+				 <option value="none">None</option>
+			</field>
+			<field name="endVideoAction" type="radio" default="none" label="APSL_END_VIDEO_ACTION_LABEL" description="APSL_END_VIDEO_ACTION_DESC" class="btn-group radios-align">
+				 <option value="startAutoplay">Start Autoplay</option>
+				 <option value="nextSlide">Next Slide</option>
+				 <option value="replayVideo">Replay Video</option>
+				 <option value="none">None</option>
+			</field>
+		</fieldset>
+	
+		<!-- Advanced -->	
+		<fieldset name="advanced">
+			<field type="apspacer" name="loadjsapspacer" class="hideshowspacer" label="APSL_JS_LABEL_INFO_LABEL" description="APSL_JS_LABEL_INFO_DESC" />
+			<field name="load_js" type="radio" label="APSL_LOAD_JS_LABEL" default="customtag" description="APSL_LOAD_JS_DESC" class="btn-group radios-align"> 				 				 
+				 <option value="customtag">Add Custom Tag</option>
+				 <option value="head">To Head</option>
+			</field>
+			<field type="spacer" />	
+			<field type="apspacer" label="Other Options" />
+			<field name="moduleclass_sfx" type="text" default="" label="MODULE_CLASS_SUFFIX" description="PARAMMODULECLASSSUFFIX" />		
+			<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field name="cachemode" type="hidden" default="itemid">
+				   <option value="itemid"></option>
+				</field>
+			<field type="Apmod" default="" label="&lt;span class=&quot;hidden&quot;&gt;&lt;/span&gt;" description="" />
+		</fieldset>
+
+	</fields>
+  </config>	
+</extension>

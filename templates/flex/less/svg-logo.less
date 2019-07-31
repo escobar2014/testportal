@@ -1,0 +1,596 @@
+
+
+svg {
+	/* light style */
+	&.flex-logo-light {
+			
+			margin: 0 auto;
+		  
+			g#Background {
+				path#flex_rectangle_fill {
+					opacity: 0;
+					fill: transparent;
+					stroke-dasharray: 1200;
+					stroke-dashoffset: 1200;
+					animation-name: fade-in;
+					animation-duration: 0.5s;
+					animation-delay: 3s;
+					stroke-width: 0;
+					animation-name: fade-in;
+					animation-fill-mode: forwards;
+					animation-iteration-count: 1;
+					animation-timing-function: linear;
+				}
+				path#flex_rectangle {
+				  stroke: fade(white, 70%);
+				  stroke-width: 7;
+				  stroke-dasharray: 2800;
+				  stroke-dashoffset: 2800;
+				  opacity: 1;
+				  animation-duration: 2.3s;
+				  animation-delay: 1s;
+				  animation-fill-mode: forwards;
+				  animation-iteration-count: 1;
+				  animation-name: show;
+				  animation-timing-function: linear;
+				}
+			}
+			
+			g#flex_logo  {
+				polygon {
+					opacity:0;
+					stroke-width: 1;
+					animation-duration: 0.7s;
+					animation-delay: 2.5s;
+					animation-fill-mode: forwards;
+					animation-iteration-count: 1;
+					animation-name: gradient_fade;
+					animation-timing-function: linear;
+					
+					&#gradient_1 {
+				   		fill:fade(white, 80%);
+					}
+					&#gradient_2 {
+						fill:fade(white, 92%);
+					}
+				}
+			
+				#logo_top_bckg {
+					opacity:0;
+					stroke-width: 1;
+					animation-duration: 0.7s;
+					animation-delay: 2.5s;
+					animation-fill-mode: forwards;
+					animation-iteration-count: 1;
+					animation-name: gradient_fade;
+					animation-timing-function: linear;
+				}
+				
+				path {
+				  stroke-width: 7;
+				  stroke: fade(white, 70%);
+				  opacity: 1;
+				  stroke-dasharray: 1500;
+				  stroke-dashoffset: 1500;
+				  animation-duration: 2s;
+				  animation-delay: 1s;
+				  animation-fill-mode: forwards;
+				  animation-iteration-count: 1;
+				  animation-name: gradient_fade;
+				  animation-timing-function: linear;
+				  
+				  
+					&#logo_top {
+					  stroke-width: 7;
+					  stroke: fade(white, 70%);
+					  stroke-dasharray: 2000;
+					  stroke-dashoffset: 2000;
+					  animation-duration: 2.5s;
+					  animation-delay: 0.6s;
+					}
+					&#logo_main1 {
+					  stroke-dasharray: 1500;
+					  stroke-dashoffset: 1500;
+					  animation-duration: 3s;
+					  animation-delay: 1.6s;
+					}
+					&#logo_main2 {
+					  stroke-dasharray: 1500;
+					  stroke-dashoffset: 1500;
+					  animation-duration: 3s;
+					  animation-delay: 2s;
+					}
+	
+				}
+			}
+			
+			g#flex {
+				path {
+					stroke-width: 12;
+					stroke: fade(white, 70%);
+					animation-fill-mode: forwards;
+					animation-iteration-count: 1;
+					animation-name: draw;
+					animation-timing-function: linear;
+					
+					&#f_top {
+						stroke-width: 12;
+						stroke-dasharray: 700;
+						stroke-dashoffset: 700;
+						animation-duration: 2s;
+						animation-delay: 3s;
+					}
+					
+					&#f {
+						stroke-dasharray: 2810;
+						stroke-dashoffset: 2810;
+						animation-duration: 5s;
+						animation-delay: 4s;
+					}
+					
+					&#l {
+						stroke-dasharray: 900;
+						stroke-dashoffset: 900;
+						animation-duration: 1.5s;
+						animation-delay: 4.7s;
+					}
+					&#e {
+						stroke-dasharray: 1500;
+						stroke-dashoffset: 1500;
+						animation-duration: 2s;
+						animation-delay: 5s;
+					}
+					&#x {
+						stroke-dasharray: 1500;
+						stroke-dashoffset: 1500;
+						animation-duration: 2s;
+						animation-delay: 5.4s;
+					}
+					
+				}
+			}
+			
+		g#flex_after {
+			path {
+			  stroke-width:0;
+			  opacity:0;
+			  fill: transparent;
+			  animation-duration: 0.8s;
+			  animation-delay: 7s;
+			  animation-fill-mode: forwards;
+			  animation-iteration-count: 1;
+			  animation-name: flex_after_fade_light;
+			  animation-timing-function: linear;
+			  
+			  &#f_top {
+				  fill: transparent;
+				  animation-duration: 1s;
+				  animation-delay: 8s;
+				  animation-fill-mode: forwards;
+				  animation-iteration-count: 2;
+				  animation-name: flex_after_f_top;
+				  animation-timing-function: ease-in-out;
+				}
+			}
+		}
+		/* delayed 2 sec */
+		&.delayed {
+			
+			g#Background {
+				path#flex_rectangle_fill {
+					animation-duration: 0.5s;
+					animation-delay: 5s;
+					stroke-width: 0;
+				}
+				path#flex_rectangle {
+				  stroke-width: 7;
+				  animation-duration: 2.3s;
+				  animation-delay: 3s;
+				}
+			}
+			g#flex_logo  {
+				
+				polygon,#logo_top_bckg {
+					stroke-width: 1;
+					animation-duration: 0.7s;
+					animation-delay: 4.5s;
+				}
+				
+				path {
+				  stroke-width: 7;
+				  stroke: fade(white, 70%);
+				  animation-duration: 2s;
+				  animation-delay: 3s;
+				  
+				  
+					&#logo_top {
+					  stroke-width: 7;
+					  stroke: fade(white, 70%);
+					  animation-duration: 2.5s;
+					  animation-delay: 2.6s;
+					}
+					&#logo_main1 {
+					  animation-duration: 3s;
+					  animation-delay: 3.6s;
+					}
+					&#logo_main2 {
+					  animation-duration: 3s;
+					  animation-delay: 4s;
+					}
+	
+				}
+			}
+			
+			g#flex {
+				path {
+					stroke-width: 8;
+					
+					&#f_top {
+						stroke-width: 12;
+						animation-duration: 2s;
+						animation-delay: 5s;
+					}
+					
+					&#f {
+						animation-duration: 5s;
+						animation-delay: 6s;
+					}
+					
+					&#l {
+						animation-duration: 1.5s;
+						animation-delay: 6.7s;
+					}
+					&#e {
+						animation-duration: 2s;
+						animation-delay: 7s;
+					}
+					&#x {
+						animation-duration: 2s;
+						animation-delay: 7.4s;
+					}
+					
+				}
+			}
+			
+			g#flex_after {
+				path {
+				  animation-duration: 0.8s;
+				  animation-delay: 9s;
+				  
+				  &#f_top {
+					  animation-duration: 1s;
+					  animation-delay: 7s;
+					  animation-fill-mode: forwards;
+					  animation-iteration-count: 1;
+					}
+				}
+			}
+		}	
+	}
+
+
+
+	/* default style */
+	&.flex-logo-default {
+			max-width: 400px;
+			margin: 0 auto;
+		  
+			g#Background {
+				path#flex_rectangle_fill {
+					opacity: 0;
+					fill: transparent;
+					stroke-dasharray: 1200;
+					stroke-dashoffset: 1200;
+					animation-name: fade-in;
+					animation-duration: 0.5s;
+					animation-delay: 3s;
+					stroke-width: 0;
+					animation-name: fade-in;
+					animation-fill-mode: forwards;
+					animation-iteration-count: 1;
+					animation-timing-function: linear;
+				}
+				path#flex_rectangle {
+				  stroke: fade(black, 70%);
+				  stroke-width: 7;
+				  stroke-dasharray: 2800;
+				  stroke-dashoffset: 2800;
+				  opacity: 1;
+				  animation-duration: 2.3s;
+				  animation-delay: 1s;
+				  animation-fill-mode: forwards;
+				  animation-iteration-count: 1;
+				  animation-name: show;
+				  animation-timing-function: linear;
+				}
+			}
+			g#flex_logo  {
+				
+				polygon {
+					opacity:0;
+					stroke-width: 1;
+					animation-duration: 0.7s;
+					animation-delay: 2.5s;
+					animation-fill-mode: forwards;
+					animation-iteration-count: 1;
+					animation-name: gradient_fade;
+					animation-timing-function: linear;
+					
+					&#gradient_1 {
+				   		fill:fade(white, 80%);
+					}
+					&#gradient_2 {
+						fill:fade(white, 92%);
+					}
+				}
+				#logo_top_bckg {
+					opacity:0;
+					stroke-width: 1;
+					animation-duration: 0.7s;
+					animation-delay: 2.5s;
+					animation-fill-mode: forwards;
+					animation-iteration-count: 1;
+					animation-name: gradient_fade;
+					animation-timing-function: linear;
+				}
+				
+				path {
+				  stroke-width: 7;
+				  stroke: fade(black, 70%);
+				  opacity: 1;
+				  stroke-dasharray: 1500;
+				  stroke-dashoffset: 1500;
+				  animation-duration: 2s;
+				  animation-delay: 1s;
+				  animation-fill-mode: forwards;
+				  animation-iteration-count: 1;
+				  animation-name: gradient_fade;
+				  animation-timing-function: linear;
+				  
+				  
+					&#logo_top {
+					  stroke-width: 7;
+					  stroke: fade(black, 70%);
+					  stroke-dasharray: 2000;
+					  stroke-dashoffset: 2000;
+					  animation-duration: 2.5s;
+					  animation-delay: 0.6s;
+					}
+					&#logo_main1 {
+					  stroke-dasharray: 1500;
+					  stroke-dashoffset: 1500;
+					  animation-duration: 3s;
+					  animation-delay: 1.6s;
+					}
+					&#logo_main2 {
+					  stroke-dasharray: 1500;
+					  stroke-dashoffset: 1500;
+					  animation-duration: 3s;
+					  animation-delay: 2s;
+					}
+	
+				}
+			}
+			
+			g#flex {
+				path {
+					stroke-width: 12;
+					stroke: fade(black, 50%);
+					animation-fill-mode: forwards;
+					animation-iteration-count: 1;
+					animation-name: draw;
+					animation-timing-function: linear;
+					
+					&#f_top {
+						stroke-width: 12;
+						stroke-dasharray: 700;
+						stroke-dashoffset: 700;
+						animation-duration: 2s;
+						animation-delay: 3s;
+					}
+					
+					&#f {
+						stroke-dasharray: 2810;
+						stroke-dashoffset: 2810;
+						animation-duration: 5s;
+						animation-delay: 4s;
+					}
+					
+					&#l {
+						stroke-dasharray: 900;
+						stroke-dashoffset: 900;
+						animation-duration: 1.5s;
+						animation-delay: 4.7s;
+					}
+					&#e {
+						stroke-dasharray: 1500;
+						stroke-dashoffset: 1500;
+						animation-duration: 2s;
+						animation-delay: 5s;
+					}
+					&#x {
+						stroke-dasharray: 1500;
+						stroke-dashoffset: 1500;
+						animation-duration: 2s;
+						animation-delay: 5.4s;
+					}
+					
+				}
+			}
+			
+		g#flex_after {
+			path {
+			  stroke-width:0;
+			  opacity:0;
+			  fill: transparent;
+			  animation-duration: 0.8s;
+			  animation-delay: 7s;
+			  animation-fill-mode: forwards;
+			  animation-iteration-count: 1;
+			  animation-name: flex_after_fade_default;
+			  animation-timing-function: linear;
+			  
+			  &#f_top {
+				  fill: transparent;
+				  animation-duration: 1s;
+				  animation-delay: 8s;
+				  animation-fill-mode: forwards;
+				  animation-iteration-count: 2;
+				  animation-name: flex_after_f_top;
+				  animation-timing-function: ease-in-out;
+				}
+			}
+		}
+		/* delayed 2 sec */
+		&.delayed {
+			
+			g#Background {
+				path#flex_rectangle_fill {
+					animation-duration: 0.5s;
+					animation-delay: 5s;
+					stroke-width: 0;
+				}
+				path#flex_rectangle {
+				  stroke-width: 7;
+				  animation-duration: 2.3s;
+				  animation-delay: 3s;
+				}
+			}
+			g#flex_logo  {
+				
+				polygon,#logo_top_bckg {
+					stroke-width: 1;
+					animation-duration: 0.7s;
+					animation-delay: 4.5s;
+				}
+				
+				path {
+				  stroke-width: 7;
+				  stroke: fade(black, 70%);
+				  animation-duration: 2s;
+				  animation-delay: 3s;
+				  
+				  
+					&#logo_top {
+					  stroke-width: 7;
+					  stroke: fade(black, 70%);
+					  animation-duration: 2.5s;
+					  animation-delay: 2.6s;
+					}
+					&#logo_main1 {
+					  animation-duration: 3s;
+					  animation-delay: 3.6s;
+					}
+					&#logo_main2 {
+					  animation-duration: 3s;
+					  animation-delay: 4s;
+					}
+	
+				}
+			}
+			
+			g#flex {
+				path {
+					stroke-width: 8;
+					
+					&#f_top {
+						stroke-width: 12;
+						animation-duration: 2s;
+						animation-delay: 5s;
+					}
+					
+					&#f {
+						animation-duration: 5s;
+						animation-delay: 6s;
+					}
+					
+					&#l {
+						animation-duration: 1.5s;
+						animation-delay: 6.7s;
+					}
+					&#e {
+						animation-duration: 2s;
+						animation-delay: 7s;
+					}
+					&#x {
+						animation-duration: 2s;
+						animation-delay: 7.4s;
+					}
+					
+				}
+			}
+			
+			g#flex_after {
+				path {
+				  animation-duration: 0.8s;
+				  animation-delay: 9s;
+				  
+				  &#f_top {
+					  animation-duration: 1s;
+					  animation-delay: 7s;
+					  animation-fill-mode: forwards;
+					  animation-iteration-count: 1;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+	stroke-width:4;
+	opacity:1;
+  }
+}
+@keyframes show {
+  to {
+    opacity: 1;
+	stroke-dashoffset: 0;
+	stroke-width: 0;
+  }
+}
+@keyframes fade-in {
+  to {
+    opacity: 1;
+	fill:fade(@major_color, 90%);
+	stroke-dashoffset:0;
+	stroke-width: 0;
+  }
+}
+@keyframes gradient_fade {
+  to {
+    opacity: 1;
+	stroke-dashoffset:0;
+	stroke-width: 0;
+  }
+}
+@keyframes flex_after_fade_default {
+  to {
+    opacity: 1;
+	stroke-width:0;
+	stroke-dashoffset:0;
+	fill:fade(@gray, 70%);
+	stroke:fade(@gray, 70%);
+  }
+}
+@keyframes flex_after_fade_light {
+  to {
+    opacity: 1;
+	stroke-width:0;
+	stroke-dashoffset:0;
+	fill:fade(white, 60%);
+	stroke:fade(white, 50%);
+  }
+}
+@keyframes flex_after_f_top {
+  to {
+    opacity: 1;
+	stroke-width:5;
+	stroke-dashoffset:0;
+	fill:fade(@major_color, 85%);
+	stroke:@major_color;
+  }
+}

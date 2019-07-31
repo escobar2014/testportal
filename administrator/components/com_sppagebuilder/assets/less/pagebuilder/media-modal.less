@@ -1,0 +1,111 @@
+body.sp-pagebuilder-media-modal-open {
+  overflow: hidden;
+}
+
+.sp-pagebuilder-media-modal-overlay {
+  background-color: rgba(0, 0, 0, .1);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 99999;
+}
+
+#sp-pagebuilder-media-modal * {
+  .box-sizing(border-box);
+}
+
+#sp-pagebuilder-media-modal {
+  background: #edf0f5;
+  bottom: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+  left: 30px;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  z-index: 999999;
+
+  /*Sidebar*/
+  .sp-pagebuilder-media-modal-sidebar {
+    background-color: #ffffff;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 280px;
+    .box-shadow(~'0 0 10px rgba(0, 0, 0, 0.15)');
+    z-index: 2;
+
+    #sp-pagebuilder-media-types {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+
+      >li {
+        margin: 0;
+        >a {
+          font-weight: 500;
+        }
+        &.active {
+          >a {
+            background: #fafafc;
+          }
+        }
+      }
+    }
+  }
+
+  .sp-pagebuilder-media-toolbar {
+    margin-left: 280px;
+    padding: 9px 30px;
+    .box-shadow(1px 2px 2px 0px rgba(0,0,0,0.05));
+    z-index: 1;
+
+    .sp-pagebuilder-btn-close-modal {
+      background-color: #fff;
+      border-radius: 25px;
+      border: 3px solid #000000;
+      color: #000000;
+      height: 30px;
+      line-height: 24px;
+      position: absolute;
+      right: -15px;
+      text-align: center;
+      top: -15px;
+      width: 30px;
+      z-index: 3;
+    }
+  }
+
+  .sp-pagebuilder-media-modal-body {
+    bottom: 0;
+    left: 280px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    right: 0;
+    top: 64px;
+
+    .sp-pagebuilder-media-modal-body-inner {
+      padding: 30px;
+
+      .sp-pagebuilder-media-list {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.sp-pagebuilder-media-preview {
+	display: block;
+	margin: 5px 0 20px 0;
+	padding: 10px;
+	background: #edf1f5;
+	max-width: 100%;
+	max-height: 200px;
+
+  &.sp-pagebuilder-media-no-image {
+  	display: none;
+  }
+}

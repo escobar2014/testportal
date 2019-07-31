@@ -1,0 +1,142 @@
+
+.gridly, .gridly > :not(.dragging) {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;}
+.gridly .dragging {z-index: 800;}
+
+#loader {width:200px;height:130px;padding:10px;padding:1px 0 22px;}
+#loader img {margin:15px 0 0 30px;}
+
+.gridly {
+	position: relative;
+	width: 990px;
+	margin: 0 auto;
+	color: #D2A68A;
+}
+
+#apListImage {
+	background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPg0KPHJlY3Qgd2lkdGg9IjUiIGhlaWdodD0iNSIgZmlsbD0iI2Q2ZDZkNiI+PC9yZWN0Pg0KPHBhdGggZD0iTTAgNUw1IDBaTTYgNEw0IDZaTS0xIDFMMSAtMVoiIHN0cm9rZT0iI2YwZjBmMCIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+DQo8L3N2Zz4=');
+	background-repeat: repeat;
+	background-position: center center;
+	margin: 20px auto 0;
+	width: 100%;
+	padding: 8px 0;
+}
+#apSort{
+	display: table-cell;
+	list-style: none outside none;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+.control-group.disabled, div.disabled, .control-label label.disabled {z-index:-1;cursor:context-menu}
+
+.ap-img {border:1px solid #b3b3b3;border-radius:3px;cursor:move;padding:8px 0 0;margin:5px 0 0 15px;text-align:center;z-index:10;}
+.ap-img:hover {border:1px solid #888;box-shadow:0 0 9px rgba(0,0,0,.55);}
+.ap-img .brick-image {min-height:100px;padding:0;}
+.ap-img .brick-image img {max-width:150px;max-height:100px;margin:0 auto;text-align:center;padding:0;}
+
+
+div.control-group .control-label label[id^="jform_params_path_folder"]{position:relative;display:block;float:left;width:94.5%;margin:0;text-align:right;background:#f1f1f1;box-shadow:inset -2px 0 0px #ccc;padding:4px 12px 5px 5px}
+
+.control-label-clone{width:30%;margin:0 20px 0 0;padding:0;float:left;position:relative;display:block;clear:both;}
+.control-label-clone label{position:relative;display:inline-block;float:left;margin:0;text-align:right;background:#f1f1f1;box-shadow:inset -2px 0 0px #ccc;padding:4px 12px 5px 5px}
+
+.brick.small{width:177px;height:125px;text-align:center;background:rgba(255,255,255,.85);}
+.ap-img-btn {display:block;clear:both;width:100%;height:24px;background:rgba(0,0,0,.05);margin:0 auto;border-top:1px solid #d2d2d2;z-index:11;}
+.ap-img-btn a {
+	font-size:100%;
+	width:88px;
+	display: block;
+	float:left;
+	line-height: 210%;
+	color: #777;
+	text-decoration: none;
+	-webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+}
+.ap-img-btn a.edit {border-right:1px solid #d2d2d2;}
+.ap-img-btn a.delete{}
+.ap-img-btn a:hover {color:#555;background:#fff;text-decoration: none;}
+.ap-img-btn a i {vertical-align:middle;font-size:16px;line-height:24px;margin-left:2px;margin-right:4px;}
+.ap-img-btn a i.fa-pencil-square-o {
+	color: #FF6F04;
+}
+.ap-img-btn a:hover i.fa-pencil-square-o {color: #DD5E00;}
+.ap-img-btn a i.fa-times-circle {margin-top:-1px;color: #999;line-height:20px;}
+.ap-img-btn a:hover i.fa-times-circle {color: #595959;}
+
+	
+div.no-item-image {border:1px solid #c0c0c0;padding:4px;margin:6px 3%;text-align:center;width:380px;}
+div.no-item-image .no-image {background:#777;}
+div.no-item-image .no-image .no-image-text {text-align:center; color:#fff;line-height:90px;box-shadow:inset 0 0 30px rgba(0,0,0,.3);text-shadow:1px 1px 2px #444;}
+div.no-item-image .no-image .no-image-text i.fa {margin-left:7px;}
+
+/* Edit Modal (apModal) */
+#apModal {height:85vh;width:70%;margin-left:-35%;}
+#apModal .modal-body{max-height:70vh;overflow: auto;overflow-y: scroll;-webkit-overflow-scrolling: touch;position: relative;}
+#apModal .modal-header,
+#apModal .modal-footer {background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPg0KPHJlY3Qgd2lkdGg9IjUiIGhlaWdodD0iNSIgZmlsbD0iI2Y3ZjdmNyI+PC9yZWN0Pg0KPHBhdGggZD0iTTAgNUw1IDBaTTYgNEw0IDZaTS0xIDFMMSAtMVoiIHN0cm9rZT0iI2YxZjFmMSIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+DQo8L3N2Zz4=') center center repeat;}
+#apModal .modal-header {margin:0 auto;border-radius:7px 7px 0 0;box-shadow:inset 0 -1px 0px white;}
+#apModal .modal-header .modal-title {color:#777;}
+#apModal .modal-header button.close {margin-top:5px;margin-bottom:-10px;}
+#apModal .modal-footer {border-radius:0 0 7px 7px;box-shadow:inset 0 1px 1px white;bottom:0;}
+
+#apModal .modal-body .control-group label.control-label-clone {width:25%;text-align:right;padding:7px;margin:0 8px 0 0;font-size:115%;}
+#apModal .modal-body .control-group label.control-label-clone i{color:#999;font-size:90%;margin-left:3px}
+#apModal .modal-body .control-group .controls{width:70%!important;margin:0;padding:0;}
+#apModal .modal-body .control-group .controls input,
+#apModal .modal-body .control-group .controls textarea {width:95%;padding:6px 8px;}
+#apModal .modal-footer button {padding:5px 22px;min-width:13%;line-height:1.8;}
+#apModal .modal-footer button i {font-size:90%;margin:0 -9px 0 8px;}
+#apModal .modal-footer button.btn-custom {
+  background-color: hsl(196, 35%, 30%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#427689", endColorstr="#315867");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#427689), to(#315867));
+  background-image: -moz-linear-gradient(top, #427689, #315867);
+  background-image: -ms-linear-gradient(top, #427689, #315867);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #427689), color-stop(100%, #315867));
+  background-image: -webkit-linear-gradient(top, #427689, #315867);
+  background-image: -o-linear-gradient(top, #427689, #315867);
+  background-image: linear-gradient(#427689, #315867);
+  border-color: #315867 #315867 hsl(196, 35%, 27.5%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.16);
+  -webkit-font-smoothing: antialiased;
+}
+#apModal .helper{
+	font-size: 90%;
+	color: #888;
+	cursor: text;
+	text-align: center;
+}
+#apModal .helper .icomoon-info {
+	color: #E4B07C;
+	font-size: 14px;
+}
+#apModal pre {text-align:left;cursor:text;color:#898989;}
+#apModal pre:in-range {color:#555;}
+#apModal .description-group {background:#f8f8f8;padding:20px 0 5px;border:1px solid #f0f0f0;border-radius:3px;}
+
+@media (max-width: 1200px) {
+  #apModal {max-height:90%;}
+  #apModal .modal-body{max-height:80%;}
+  #apModal .modal-body .control-group .controls textarea {height:65vh;}
+}
+
+@media (max-width: 767px) {
+  #apModal {width:80%;height:90%;margin-left:6%;}
+  #apModal .modal-body .control-group label.control-label-clone,
+  #apModal .modal-body .control-group .controls {width:97%!important;text-align:left;}
+  #apModal .modal-body .control-group label.control-label,
+  #apModal .modal-body .control-group .controls input {width:95%;}
+  #apModal .modal-body .control-group .controls textarea {width:95%;height:auto;margin-left:2%;}
+}	
+@media (max-width: 480px) {
+  div.no-item-image {width:90%;text-align:center;}
+}
+

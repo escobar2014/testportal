@@ -1,0 +1,146 @@
+//
+// Button groups
+// --------------------------------------------------
+
+// Make the div behave like a button
+.sp-pagebuilder-btn-group,
+.sp-pagebuilder-btn-group-vertical {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle; // match .btn alignment given font-size hack above
+  > .sp-pagebuilder-btn {
+    position: relative;
+    float: left;
+    // Bring the "active" button to the front
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      z-index: 2;
+    }
+  }
+}
+
+// Prevent double borders when buttons are next to each other
+.sp-pagebuilder-btn-group {
+  .sp-pagebuilder-btn + .sp-pagebuilder-btn,
+  .sp-pagebuilder-btn + .sp-pagebuilder-btn-group,
+  .sp-pagebuilder-btn-group + .sp-pagebuilder-btn,
+  .sp-pagebuilder-btn-group + .sp-pagebuilder-btn-group {
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+.sp-pagebuilder-btn-group > .sp-pagebuilder-btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 0;
+}
+
+// Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
+.sp-pagebuilder-btn-group > .sp-pagebuilder-btn:first-child {
+  margin-left: 0;
+  &:not(:last-child):not(.dropdown-toggle) {
+    .border-right-radius(0);
+  }
+}
+// Need .dropdown-toggle since :last-child doesn't apply, given that a .dropdown-menu is used immediately after it
+.sp-pagebuilder-btn-group > .sp-pagebuilder-btn:last-child:not(:first-child),
+.sp-pagebuilder-btn-group > .dropdown-toggle:not(:first-child) {
+  .border-left-radius(0);
+}
+
+// Custom edits for including btn-groups within btn-groups (useful for including dropdown buttons within a btn-group)
+.sp-pagebuilder-btn-group > .sp-pagebuilder-btn-group {
+  float: left;
+}
+.sp-pagebuilder-btn-group > .sp-pagebuilder-btn-group:not(:first-child):not(:last-child) > .sp-pagebuilder-btn {
+  border-radius: 0;
+}
+.sp-pagebuilder-btn-group > .sp-pagebuilder-btn-group:first-child:not(:last-child) {
+  > .sp-pagebuilder-btn:last-child,
+  > .dropdown-toggle {
+    .border-right-radius(0);
+  }
+}
+.sp-pagebuilder-btn-group > .sp-pagebuilder-btn-group:last-child:not(:first-child) > .sp-pagebuilder-btn:first-child {
+  .border-left-radius(0);
+}
+
+// On active and open, don't show outline
+.sp-pagebuilder-btn-group .dropdown-toggle:active,
+.sp-pagebuilder-btn-group.open .dropdown-toggle {
+  outline: 0;
+}
+
+
+// Sizing
+//
+// Remix the default button sizing classes into new ones for easier manipulation.
+
+.sp-pagebuilder-btn-group-xs > .sp-pagebuilder-btn { &:extend(.btn-xs); }
+.sp-pagebuilder-btn-group-sm > .sp-pagebuilder-btn { &:extend(.btn-sm); }
+.sp-pagebuilder-btn-group-lg > .sp-pagebuilder-btn { &:extend(.btn-lg); }
+
+
+// Split button dropdowns
+// ----------------------
+
+// Give the line between buttons some depth
+.sp-pagebuilder-btn-group > .sp-pagebuilder-btn + .dropdown-toggle {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.sp-pagebuilder-btn-group > .sp-pagebuilder-btn-lg + .dropdown-toggle {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+// The clickable button for toggling the menu
+// Remove the gradient and set the same inset shadow as the :active state
+.sp-pagebuilder-btn-group.open .dropdown-toggle {
+  .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+
+  // Show no shadow for `.btn-link` since it has no other button styles.
+  &.sp-pagebuilder-btn-link {
+    .box-shadow(none);
+  }
+}
+
+
+// Reposition the caret
+.sp-pagebuilder-btn .caret {
+  margin-left: 0;
+}
+// Carets in other button sizes
+.sp-pagebuilder-btn-lg .caret {
+  border-width: @caret-width-large @caret-width-large 0;
+  border-bottom-width: 0;
+}
+// Upside down carets for .dropup
+.sp-pagebuilder-dropup .sp-pagebuilder-btn-lg .caret {
+  border-width: 0 @caret-width-large @caret-width-large;
+}
+
+
+// Checkbox and radio options
+//
+// In order to support the browser's form validation feedback, powered by the
+// `required` attribute, we have to "hide" the inputs via `clip`. We cannot use
+// `display: none;` or `visibility: hidden;` as that also hides the popover.
+// Simply visually hiding the inputs via `opacity` would leave them clickable in
+// certain cases which is prevented by using `clip` and `pointer-events`.
+// This way, we ensure a DOM element is visible to position the popover from.
+//
+// See https://github.com/twbs/bootstrap/pull/12794 and
+// https://github.com/twbs/bootstrap/pull/14559 for more information.
+
+[data-toggle="buttons"] {
+  > .sp-pagebuilder-btn,
+  > .sp-pagebuilder-btn-group > .sp-pagebuilder-btn {
+    input[type="radio"],
+    input[type="checkbox"] {
+      position: absolute;
+      clip: rect(0,0,0,0);
+      pointer-events: none;
+    }
+  }
+}

@@ -1,0 +1,373 @@
+/**
+ * Flex @package Helix3 Framework
+ * @author Aplikko http://www.aplikko.com
+ * @copyright Copyright (c) 2018 Aplikko
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
+*/
+
+
+/* Centering content */
+.centered, .addspace {
+	.container, .container-fluid {	
+		>.row {
+			.flexbox();
+			.flex-justify-content(center);
+			margin:0 auto;
+			padding:0;	
+		}
+	}
+}
+
+#sp-logo {
+	.flexbox();
+	.flex-align-items();
+	.flex-justify-content(start); /* (start) will move it to the left (LTR), where (center) to center; */
+	z-index:10;
+	
+		.sp-default-logo,
+		.sp-retina-logo {
+			max-height:100%; /* fix when Logo graphic (image) is too wide (large) */
+			width:auto;
+		}
+}
+a.logo {
+  .sp-retina-logo {
+  	display: none; // hiding retina logo from non-retina devices
+  }
+}
+
+
+
+/*=========================================
+*======= 	Start  Header	   ============
+*=======================================*/
+#sp-header{
+
+	#sp-menu {
+		
+		.sp-column {
+			.sp-megamenu-parent {
+				float:right;
+				>li {
+					>a {
+
+						>.pe {
+							font-size:125%;
+							text-align:center;
+							vertical-align:middle;
+							line-height:1;
+							margin-top:-3px;
+				
+						}
+					}
+				}
+			}
+		}
+		.sp-menu-item {
+			>a {
+				>img {
+					max-height:20px;/* image icon */
+					max-width:20px;
+					display:inline;
+					margin:-2px 7px 0 0;
+				}
+			}
+			.pe {
+				font-size:120%;
+				
+				vertical-align:middle;
+				line-height:1;
+				margin:-2px auto 0;
+	
+			}
+			&.bold {
+				.pe {
+					font-weight:600;
+				}
+			}
+			.sp-module {
+				margin:2px auto 0;
+			}
+		}
+		
+		.sp-dropdown {
+			.sp-dropdown-inner {
+				border-radius:0 0 3px 3px;
+				background: rgba(40,40,40,.8); /* starting color */
+				li.sp-menu-item {
+					>a {
+						color:#f7f7f7; /* starting color */
+					}
+				}
+			}
+		}
+	}
+	// Logo
+	.logo {
+		margin:auto;
+		.flexbox();
+		.flex-align-items();
+		
+		h1 {
+			font-size: 24px;
+			line-height: 1;
+			margin: 0;
+			padding: 0;
+			vertical-align: middle;	
+		}
+
+		p {
+			margin: 5px 0 0;
+		}
+	}
+	
+	&.white,
+	&.transparent-white,
+	&.onepage  {
+		#sp-menu {
+			.sp-dropdown {
+				.sp-dropdown-inner {
+					background: fade(white, 80%); /* starting color */
+					
+					li.sp-menu-item {
+						>a {
+							color:@text_color; /* starting color */
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* Transparent Wrapper */
+.transparent-wrapper {
+	position:absolute;
+	right:0;
+	left:0;
+	z-index:9;
+	margin:0 auto;
+	padding:0;
+
+	header.transparent {
+		background:transparent;
+	}
+	.onepage, .white {
+		background: fade(white, 80%); /* starting color */
+		box-shadow:0 2px 6px fade(black, 10%);
+		
+		
+		.sp-megamenu-parent li a {
+			color:@text_color;
+		}
+		
+	}
+	
+}
+
+/* Header AddSpace */
+#sp-header {
+
+	&.addspace {
+		
+		>.container, >.container-fluid {
+			padding:0;
+			>.row {
+				.flexbox();
+				.flex-justify-content(center);
+				margin:0 auto;
+				padding:0;
+			}
+		}
+	
+		#sp-menu {
+			
+			width:auto;
+			padding:0;
+			
+			.sp-column.centered {		
+				margin:0 auto;
+			}
+		}
+		.vmCartModule {
+			top:0;
+			left:0;
+			position:absolute;
+		}
+		#cart-menu {
+		
+			padding:0;
+			margin-left:-15px;
+			display:block;
+	
+			.cd-cart {
+				.transition(background 0.3s);
+				
+				i {
+					display:block;
+					width:90px;
+					text-align:center;
+				}
+				.total_products {
+					right:18px;
+				}
+			}
+			&.shopping-menu-is-open {
+				padding:0;
+				
+				.cd-cart {
+					height:100vh;
+
+					
+					i {
+						text-align:center;
+					}
+					.total_products {
+						right:18px;
+					}
+				}
+			}
+		}
+	}
+}
+section.addspace {
+	padding-top:10px;
+	padding-bottom:10px;
+	
+	#sp-addspace {
+		.sp-column {
+			>div {
+			 padding-top:10px;
+			 padding-bottom:10px;
+			}
+		}
+	}
+}
+
+	
+/* Header Centered (Logo/Menu) */
+#sp-header {
+	&.centered {
+		
+		>.container, >.container-fluid {
+			padding:0;
+			>.row {
+				.flexbox();
+				//.flex-align-items();
+				.flex-justify-content(center);
+				margin:0 auto;
+				padding:0;
+			}
+		}
+		
+		#sp-menu {
+			width:auto;
+			padding:0;
+			
+			.sp-column.centered {		
+				margin:0 auto;
+				padding:0;
+			}
+		}
+		
+		#cart-menu {
+			padding:0;
+			margin-left:-15px;
+			display:block;
+	
+			.cd-cart {
+
+				.transition(background 0.3s);
+				
+				i {
+					display:block;
+					//width:90px;
+					
+					text-align:center;
+				}
+				.total_products {
+					
+					right:18px;
+				}
+			}
+			&.shopping-menu-is-open {
+				padding:0;
+			
+				.cd-cart {
+					height:100vh;
+					
+					i {
+						text-align:center;
+					}
+					.total_products {
+						right:20px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.sp-column.centered {
+	text-align:center;
+	margin:0 auto;
+	padding:0;
+	
+	.flexbox();
+	.flex-align-items(center);
+	.flex-justify-content(center);
+	>a,
+	>div{
+		
+		text-align:left;
+		display:table;
+		margin:0 auto;
+		padding:0;
+	}
+	
+}
+
+
+/* Transparent Header */
+#sp-header {
+	
+	&.transparent {		
+
+		
+		&.shadow:before {
+			content:" ";
+			position:absolute;
+			height:120px;
+			width:100%;
+			background: -moz-linear-gradient(top, rgba(0,0,0,0.4) 0%, transparent 100%);
+			background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0.4)), color-stop(100%, transparent));
+			background: -webkit-linear-gradient(top, rgba(0,0,0,0.4) 0%, transparent 100%);
+			background: -o-linear-gradient(top, rgba(0,0,0,0.4) 0%, transparent 100%);
+			background: -ms-linear-gradient(top, rgba(0,0,0,0.4) 0%, transparent 100%);
+			background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 100%);
+		}
+		
+	}
+	&.color {
+		box-shadow: none;
+	}
+
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (min--moz-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5),
+only screen and (min-resolution: 192dpi) {
+  a.logo {
+    .sp-default-logo {
+    	display: none;
+    }
+    .sp-retina-logo {
+    	display: block;
+		width:auto;
+    }
+  }
+}
+/* End  Header
+*=======================================*/

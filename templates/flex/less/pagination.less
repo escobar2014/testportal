@@ -1,0 +1,272 @@
+
+.pagination-wrapper {
+	display:block;
+	margin:1em auto;
+	text-align:center;
+}
+.pagination {
+	margin:0 auto;
+	text-align:center;
+	display:table;
+}
+nav[role="pagination"] {
+  text-align: center;
+}
+
+.cd-pagination {
+	width: 90%;
+	padding:0;
+	margin:1em auto;
+	text-align: center;
+  	li {
+		display: inline-block;
+		margin: 0;
+		&.active {
+			pointer-events: none;
+		}
+		.button {
+			display: inline-block;
+		}
+	}
+	a, span {
+	  display: inline-block;
+	  -webkit-user-select: none;
+	  -moz-user-select: none;
+	  -ms-user-select: none;
+	  user-select: none;
+	  padding: .4em .8em;
+	  font-size: 100%;
+	}
+
+	a {
+	  border: 1px solid #e6e6e6;
+	  border-radius: 0.25em;
+	
+		  i {
+				font-style:normal;
+				line-height:49px;
+			}
+		  [class^="ap-"] {
+				font-style:normal;
+				line-height:26px;
+				font-size:90%;
+			}
+		.disabled {
+		  /* button disabled */
+		  color: rgba(46, 64, 87, 0.4);
+		  pointer-events: none;
+		  
+				&:before,
+				&:after {
+				   opacity:0.4;
+				}
+		}
+	}
+}
+
+/* -------------------------------- 
+No space - remove distance between list items
+-------------------------------- */
+.cd-pagination.no-space {
+  width: auto;
+  max-width: none;
+  display: inline-block;
+  border-radius: 0.25em;
+  border: 1px solid #e6e6e6;
+  
+	a, span {
+	  float: left;
+	  border-radius: 0;
+	  padding: .8em 1em;
+	  border: none;
+	}
+
+ 	 &:after {
+		  content: "";
+		  display: table;
+		  clear: both;
+	 }
+	li {
+	  margin: 0;
+	  float: left;
+	  border-right: 1px solid #e6e6e6;
+	  
+		&:first-of-type {
+			a {
+			  border-radius: 0.25em 0 0 0.25em;
+			}
+		}
+			
+	  &:last-of-type {
+		  border-right: none;
+		  	a {
+			  border-radius: 0 0.25em 0.25em 0;
+			}
+		}
+	}
+	
+	.move-buttons {
+	  width: 90%;
+	  max-width: 768px;
+	  display: block;
+	  overflow: hidden;
+	  
+		li {
+		  float: none;
+		  border: none;
+		}
+		
+		a, span {
+		  float: none;
+		}
+			
+	}
+
+}
+
+
+/* -------------------------------- 
+custom icons - customize the small arrow inside the next and prev buttons 
+-------------------------------- */
+.cd-pagination.custom-icons {
+	.button a {
+	  position: relative;
+	}
+	
+	a.next,
+	a.previous {
+		i {
+			font-family: 'ap-arrows';
+		}
+	}
+
+	.btn-previous {
+		a {
+	  		padding-left: 2.4em;
+			
+			&:before {
+				content: "\e606";
+				font-family: 'ap-arrows';
+				font-size:20px;
+				position: absolute;
+				display: inline-block;
+				line-height: 24px;
+				top: 50%;
+				margin-top:-12px;
+			}
+		}
+	}
+	.btn-next {
+		a {
+	  		padding-right: 2.4em;
+		}
+			&:last-of-type {		
+				a {
+					&:after {
+						content: "\e607";
+						font-family: 'ap-arrows';
+						font-size:20px;
+						position: absolute;
+						display: inline-block;
+						line-height: 24px;
+						top: 50%;
+						margin-top:-12px;
+					}
+				
+				}
+			}
+	}
+
+	.button:first-of-type a::before {
+	  left: .8em;
+	}
+	.button.next:last-of-type a::after {
+	  right: .8em;
+	
+	}
+
+}
+
+/* -------------------------------- 
+custom buttons - replace prev and next buttons text with a custom icon 
+-------------------------------- */
+.cd-pagination.custom-buttons a, .cd-pagination.custom-buttons span {
+  vertical-align: middle;
+}
+.cd-pagination.no-space.custom-buttons .button:last-of-type a {
+  border-radius: 0.25em 0 0 0.25em;
+}
+
+/* -------------------------------- 
+animated buttons - animate the text inside prev and next buttons 
+-------------------------------- */
+.cd-pagination.animated-buttons {
+	
+	a, span {
+	  padding: 0 1.4em;
+	  height: 50px;
+	  line-height: 50px;
+	  overflow: hidden;
+	}
+	
+	.button {
+		
+		a {
+		  position: relative;
+		  padding: 0 2em;
+		  
+		  	i {
+				display: block;
+				height: 100%;
+				-webkit-transform: translateY(100%);
+				-moz-transform: translateY(100%);
+				-ms-transform: translateY(100%);
+				-o-transform: translateY(100%);
+				transform: translateY(100%);
+				-webkit-transition: -webkit-transform 0.3s;
+				-moz-transition: -moz-transform 0.3s;
+				transition: transform 0.3s;
+			}
+			
+			&:hover {
+				i {
+				  -webkit-transform: translateY(0);
+				  -moz-transform: translateY(0);
+				  -ms-transform: translateY(0);
+				  -o-transform: translateY(0);
+				  transform: translateY(0);
+				}
+			}
+		}
+		
+		&:first-of-type,
+		&:last-of-type {	
+			a {
+				&:before,
+				&:after {
+					left: 50%;
+					-webkit-transform: translateX(-50%);
+					-moz-transform: translateX(-50%);
+					-ms-transform: translateX(-50%);
+					-o-transform: translateX(-50%);
+					transform: translateX(-50%);
+					right: auto;
+					-webkit-transition: -webkit-transform 0.3s;
+					-moz-transition: -moz-transform 0.3s;
+					transition: transform 0.3s;
+				}
+				
+				&:hover {
+					&:before,
+					&:after {
+					  -webkit-transform: translateX(-50%) translateY(-50px);
+					  -moz-transform: translateX(-50%) translateY(-50px);
+					  -ms-transform: translateX(-50%) translateY(-50px);
+					  -o-transform: translateX(-50%) translateY(-50px);
+					  transform: translateX(-50%) translateY(-50px);
+					}
+				}
+			}
+		}
+	}	
+}

@@ -1,0 +1,137 @@
+/**
+ * Featherlight – ultra slim jQuery lightbox
+ * Version 1.2.0 - http://noelboss.github.io/featherlight/
+ *
+ * Copyright 2015, Noël Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+**/
+@media all {
+	.featherlight {
+		display: none;
+		/* dimensions: spanning the background from edge to edge */
+		position:fixed;
+		top: 0; 
+		right: 0; 
+		bottom: 0; 
+		left: 0;
+		z-index: 9997;
+		/* position: centering content */
+		text-align: center;
+		/* insures that the ::before pseudo element doesn't force wrap with fixed width content; */
+		white-space: nowrap;
+		/* styling */
+		/*cursor: pointer;
+		background: #333;*/
+		/* IE8 "hack" for nested featherlights */
+		background: rgba(0, 0, 0, 0);
+	}
+
+	/* support for nested featherlights. Does not work in IE8 (use JS to fix) */
+	.featherlight:last-of-type {
+		background-color: #fff;
+		background-color: rgba( 255, 255, 255, .85);
+	}
+
+	.featherlight:before {
+		/* position: trick to center content vertically */
+		content: '';
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+		margin-right: -0.25em;
+		
+	}
+
+	.featherlight .featherlight-content {
+		/* make content container for positioned elements (close button) */
+		position: relative;
+
+		/* position: centering vertical and horizontal */
+		text-align: left;
+		vertical-align: middle;
+		display: inline-block;
+
+		/* dimensions: cut off images */
+		overflow: auto;
+		padding-bottom:0;
+		border-bottom:0;
+
+		/* dimensions: handling small or empty content */
+		min-width:  20%;
+
+		/* dimensions: handling large content */
+		margin-left: 5%;
+		margin-right: 5%;
+		max-height: 95%;
+
+		/* styling */
+		/*
+		background: #777;
+		background: rgba(205,205,205,.9);
+		cursor: auto;
+		*/
+		-ms-touch-action: none;
+		touch-action: none;
+		-webkit-box-shadow: 0 0 3.125em rgba( 0, 0, 0, .5);  
+    	box-shadow: 0 0 3.125em rgba( 0, 0, 0, .5);
+
+		/* reset white-space wrapping */
+		white-space: normal;
+	}
+
+	/* contains the content */
+	.featherlight .featherlight-inner {
+		/* make sure its visible */
+		display: block;
+	}
+	
+	.featherlight-loading {
+		left:0;
+		top:0;
+		width:100%;
+		height:100%;
+		background: #fff url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjQ0Ij4NCiAgPHBhdGggb3BhY2l0eT0iLjI1IiBmaWxsPSIjNTU1IiBkPSJNMTYgMCBBMTYgMTYgMCAwIDAgMTYgMzIgQTE2IDE2IDAgMCAwIDE2IDAgTTE2IDQgQTEyIDEyIDAgMCAxIDE2IDI4IEExMiAxMiAwIDAgMSAxNiA0Ii8+DQogIDxwYXRoIG9wYWNpdHk9Ii43NyIgZmlsbD0iIzU1NSIgZD0iTTE2IDAgQTE2IDE2IDAgMCAxIDMyIDE2IEwyOCAxNiBBMTIgMTIgMCAwIDAgMTYgNHoiPg0KICAgIDxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgdHlwZT0icm90YXRlIiBmcm9tPSIwIDE2IDE2IiB0bz0iMzYwIDE2IDE2IiBkdXI9IjAuOHMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAvPg0KICA8L3BhdGg+DQo8L3N2Zz4=') center center no-repeat!important;
+	}
+
+
+	.featherlight .featherlight-close-icon {
+		/* styling */
+		cursor: pointer;
+		text-align: center;
+		font: Arial, sans-serif;
+	}
+
+
+	.featherlight .featherlight-image {
+		/* styling */
+		width: 100%;
+		padding: 0;
+		border-bottom: 0;
+	}
+
+
+	.featherlight-iframe .featherlight-content {
+		/* removed the border for image croping since iframe is edge to edge */
+		border-bottom: 0;
+		padding: 0;
+	}
+
+	.featherlight iframe {
+		/* styling */
+		border: none;
+	}
+}
+
+/* handling phones and small screens */
+@media only screen and (max-width: 1024px) {
+	.featherlight .featherlight-content {
+		/* dimensions: maximize lightbox with for small screens */
+
+		max-height: 98%;
+
+	}
+	.featherlight .featherlight-image {
+		
+	}
+
+}

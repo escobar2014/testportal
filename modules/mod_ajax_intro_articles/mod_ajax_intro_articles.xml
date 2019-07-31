@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+	<name>Ajax Intro Articles Module</name>
+	<author>Aplikko</author>
+	<creationDate>April 2018</creationDate>
+	<copyright>Copyright (C) 2018 Aplikko. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>aplikko@gmail.com</authorEmail>
+	<authorUrl>http://www.aplikko.com</authorUrl>
+	<version>1.0</version>
+	<description>Ajax Intro Articles Module shows a list of the most recently published and current Articles in Masonry Grid with Ajax Loading of the new Articles (Intro content).</description>
+	<files>
+		<filename module="mod_ajax_intro_articles">mod_ajax_intro_articles.php</filename>
+		<folder>admin</folder>
+		<folder>tmpl</folder>
+		<filename>helper.php</filename>
+		<filename>mod_ajax_intro_articles.xml</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.mod_ajax_intro_articles.ini</language>
+	</languages>
+	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_LATEST_NEWS" />
+	<config>
+		<fields name="params">
+			<!-- <fieldset name="basic"> -->
+			<fieldset name="basic" addfieldpath="/modules/mod_ajax_intro_articles/admin">
+				<field
+					name="catid"
+					type="category"
+					extension="com_content"
+					multiple="true"
+					size="10"
+					default=""
+					label="JCATEGORY"
+					description="MOD_AJAX_INTRO_ARTICLES_CATEGORY_DESC">
+					<option value="">JOPTION_ALL_CATEGORIES</option>
+				</field>
+				
+				<field name="count" type="apslide" class="" data-content="data-content" default="3" data-slider-range="1,12" data-slider-step="1" label="MOD_AJAX_INTRO_ARTICLES_COUNT" description="MOD_AJAX_INTRO_ARTICLES_COUNT_DESC" />
+				
+				<field name="ajax_limit" type="apslide" class="" data-content="data-content" default="3" data-slider-range="1,12" data-slider-step="1" label="MOD_AJAX_INTRO_ARTICLES_LIMIT" description="MOD_AJAX_INTRO_ARTICLES_LIMIT_DESC" />
+				
+				<field
+					name="show_featured"
+					type="list"
+					default=""
+					label="MOD_AJAX_INTRO_ARTICLES_FEATURED"
+					description="MOD_AJAX_INTRO_ARTICLES_FEATURED_DESC">
+					<option value="">JSHOW</option>
+					<option value="0">JHIDE</option>
+					<option value="1">MOD_AJAX_INTRO_ARTICLES_VALUE_ONLY_SHOW_FEATURED</option>
+				</field>
+
+				<field
+					name="ordering"
+					type="list"
+					default="published"
+					label="MOD_AJAX_INTRO_ARTICLES_ORDERING"
+					description="MOD_AJAX_INTRO_ARTICLES_ORDERING_DESC">
+					<option value="c_dsc">MOD_AJAX_INTRO_ARTICLES_VALUE_RECENT_ADDED</option>
+					<option value="m_dsc">MOD_AJAX_INTRO_ARTICLES_VALUE_RECENT_MODIFIED</option>
+					<option value="p_dsc">MOD_AJAX_INTRO_ARTICLES_VALUE_RECENT_PUBLISHED</option>
+					<option value="mc_dsc">MOD_AJAX_INTRO_ARTICLES_VALUE_RECENT_TOUCHED</option>
+					<option	value="random">MOD_AJAX_INTRO_ARTICLES_VALUE_RECENT_RAND</option>
+				</field>
+
+				<field
+					name="user_id"
+					type="list"
+					default="0"
+					label="MOD_AJAX_INTRO_ARTICLES_USER"
+					description="MOD_AJAX_INTRO_ARTICLES_USER_DESC">
+					<option value="0">MOD_AJAX_INTRO_ARTICLES_VALUE_ANYONE</option>
+					<option value="by_me">MOD_AJAX_INTRO_ARTICLES_VALUE_ADDED_BY_ME</option>
+					<option value="not_me">MOD_AJAX_INTRO_ARTICLES_VALUE_NOTADDED_BY_ME</option>
+				</field>
+				
+				<field type="apspacer" name="columns_spacer_1" prepend="MOD_AJAX_INTRO_ARTICLES_COLUMNS_NOTE" class="apspacer" icon="fa fa-list-ol" divider="true" />
+				
+				<field name="columns" type="themeselect" hide_default="false" default="3" class="label-columns" label="MOD_AJAX_INTRO_ARTICLES_COLUMNS" description="MOD_AJAX_INTRO_ARTICLES_COLUMNS_DESC">
+					<option value="1">MOD_AJAX_INTRO_ARTICLES_1_COL</option>
+					<option value="2">MOD_AJAX_INTRO_ARTICLES_2_COL</option>
+					<option value="3">MOD_AJAX_INTRO_ARTICLES_3_COL</option>
+					<option value="4">MOD_AJAX_INTRO_ARTICLES_4_COL</option>
+					<option value="6">MOD_AJAX_INTRO_ARTICLES_6_COL</option>
+				</field>
+			
+				<field
+					name="intro_alignment"
+					type="selector"
+					default="intro-center"
+					label="MOD_AJAX_INTRO_ARTICLES_AJAX_INTRO_ALIGNMENT"
+					description="MOD_AJAX_INTRO_ARTICLES_AJAX_INTRO_ALIGNMENT_DESC"
+					class="buttons"
+					showon="columns:1">
+					<option value="intro-left" icon="pull-left fa fa-indent">MOD_AJAX_INTRO_ARTICLES_AJAX_READMORE_ALIGN_LEFT</option>
+					<option value="intro-center" icon="pull-left fa fa-indent fa-rotate-90">MOD_AJAX_INTRO_ARTICLES_AJAX_READMORE_ALIGN_CENTER</option>
+					<option value="intro-right" icon="pull-right fa fa-indent fa-flip-horizontal">MOD_AJAX_INTRO_ARTICLES_AJAX_READMORE_ALIGN_RIGHT</option>
+				</field>
+				
+				<field name="intro_width" 
+					type="apslide"
+					default="50"
+					data-slider-range="20,70"
+					data-slider-step="1"
+					data-content="data-content"
+					append="%"
+					label="MOD_AJAX_INTRO_ARTICLES_INTRO_WIDTH"
+					description="MOD_AJAX_INTRO_ARTICLES_INTRO_WIDTH_DESC"
+					showon="columns:1" />
+			
+				<field type="apspacer" style="margin:0 auto;" name="columns_spacer_2" showon="columns:1" hr="true" />
+				
+				<field name="cols_spacing" 
+					type="apslide"
+					default="15"
+					data-slider-range="0,50"
+					data-slider-step="1"
+					data-content="data-content"
+					append="px"
+					label="MOD_AJAX_INTRO_ARTICLES_COLUMNS_SPACING"
+					description="MOD_AJAX_INTRO_ARTICLES_COLUMNS_SPACING_DESC" />
+							
+				<field name="inner_spacing" 
+					type="apslide"
+					default="0"
+					data-slider-range="0,50"
+					data-slider-step="1"
+					data-content="data-content"
+					append="px"
+					label="MOD_AJAX_INTRO_ARTICLES_INNER_SPACING"
+					description="MOD_AJAX_INTRO_ARTICLES_INNER_SPACING_DESC" />
+
+				<field name="cols_color" type="color" label="MOD_AJAX_INTRO_ARTICLES_COLUMNS_BACKGROUND_COLOR" description="MOD_AJAX_INTRO_ARTICLES_COLUMNS_BACKGROUND_COLOR_DESC" />
+				
+				<field
+					name="equal_heights"
+					type="radio"
+					default="0"
+					class="btn-group"
+					label="MOD_AJAX_INTRO_ARTICLES_EQUAL_HEIGHT"
+					description="MOD_AJAX_INTRO_ARTICLES_EQUAL_HEIGHT_DESC"
+					showon="columns!:1">
+					<option value="1">JYES</option>
+                    <option value="0">JNO</option>	
+				</field>
+				
+				<field
+					name="rtl_enable"
+					type="radio"
+					default="0"
+					class="btn-group"
+					label="MOD_AJAX_INTRO_ARTICLES_RTL"
+					description="MOD_AJAX_INTRO_ARTICLES_RTL_DESC"
+					showon="columns!:1" >
+					<option value="1">JYES</option>
+                    <option value="0">JNO</option>
+				</field>
+				
+				<!-- Post Formats or Images -->
+				<field type="apspacer" append="MOD_AJAX_INTRO_ARTICLES_INTRO_STYLES" class="apspacer" icon="fa fa-th-large" name="intro_style_1" divider="true" />
+				<field
+					name="intro_format"
+					type="selector"
+					default="1"
+					class="styles"
+					label="MOD_AJAX_INTRO_ARTICLES_INTRO_FORMAT"
+					description="MOD_AJAX_INTRO_ARTICLES_INTRO_FORMAT_DESC">
+						<option value="1"><![CDATA[<div style="display:block;width:120px;height:60px;margin:8px auto 0;padding:0;background:url(../modules/mod_ajax_intro_articles/admin/images/post-formats.svg) no-repeat center center;" class="selector-image clearfix">
+						</div>
+						<h4 class="clearfix">Post Formats</h4>]]></option>
+						<option value="2"><![CDATA[<div style="display:block;width:120px;height:60px;margin:8px auto 0;background:url(../modules/mod_ajax_intro_articles/admin/images/intro-images.svg) no-repeat center center;" class="selector-image clearfix">
+						</div>
+						<h4 class="clearfix">Intro Images</h4>]]></option>	
+				</field>
+				<field
+					name="image_intro_link"
+					type="radio"
+					default="0"
+					class="btn-group"
+					label="MOD_AJAX_INTRO_ARTICLES_INTRO_IMAGE_LINK"
+					description="MOD_AJAX_INTRO_ARTICLES_INTRO_IMAGE_LINK_DESC"
+					showon="intro_format:2">
+					<option value="1">JYES</option>
+                    <option value="0">JNO</option>
+				</field>
+		
+				<field type="apspacer" append="MOD_AJAX_INTRO_ARTICLES_AJAX_LOADING_BUTTON_OPTIONS" class="apspacer" icon="fa fa-refresh" name="load_more_1" divider="true" />
+				
+				<field
+					name="loadmore_effect"
+					type="selector"
+					default="appear-in"
+					label="MOD_AJAX_INTRO_ARTICLES_AJAX_LOADING_APPEAR_EFFECTS"
+					description="MOD_AJAX_INTRO_ARTICLES_AJAX_LOADING_APPEAR_EFFECTS_DESC"
+					class="buttons">
+					<option value="appear-in">MOD_AJAX_INTRO_ARTICLES_APPEARIN</option>
+					<option value="simple-fade">MOD_AJAX_INTRO_ARTICLES_SIMPLEFADE</option>
+					<option value="fade-in-up">MOD_AJAX_INTRO_ARTICLES_FADEINUP</option>
+					<option value="fade-in-down">MOD_AJAX_INTRO_ARTICLES_FADEINDOWN</option>
+					<option value="intro-zoom-in">MOD_AJAX_INTRO_ARTICLES_ZOOMIN</option>
+					<option value="none">MOD_AJAX_INTRO_ARTICLES_NONE</option>
+				</field>
+	
+				<field
+					name="loadmore_button"
+					type="selector"
+					default="default"
+					class="buttons"
+					label="MOD_AJAX_INTRO_ARTICLES_AJAX_LOADING_BUTTON"
+					description="MOD_AJAX_INTRO_ARTICLES_AJAX_LOADING_BUTTON_DESC">
+					<option value="default" btn="btn-default">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_DEFAULT</option>
+					<option value="dark" btn="btn-dark">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_DARK</option>
+					<option value="light" btn="btn-light">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_LIGHT</option>
+					<option value="primary" btn="btn-primary">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_PRIMARY</option>
+					<option value="success" btn="btn-success">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_SUCCESS</option>
+					<option value="info" btn="btn-info">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_INFO</option>
+					<option value="warning" btn="btn-warning">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_WARNING</option>
+					<option value="danger" btn="btn-danger">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_DANGER</option>
+					<option value="link" btn="btn-link">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_LINK</option>
+				</field>
+				
+				<field name="loadmore_btn_text"
+					type="text"
+					hint="MOD_AJAX_INTRO_ARTICLES_AJAX_LOADER"
+					label="MOD_AJAX_INTRO_ARTICLES_AJAX_LOADER_TEXT"
+					description="MOD_AJAX_INTRO_ARTICLES_AJAX_LOADER_TEXT_DESC" />
+				
+				<field name="loadmore_color"
+					type="color"
+					label="MOD_AJAX_INTRO_ARTICLES_AJAX_LOADER_TEXT_COLOR"
+					description="MOD_AJAX_INTRO_ARTICLES_AJAX_LOADER_TEXT_COLOR_DESC" />
+					
+				<field type="apspacer" append="MOD_AJAX_INTRO_ARTICLES_STYLING_OPTIONS" class="apspacer" icon="fa fa-sliders" name="styles_spacer_1" divider="true" />
+		
+				<field
+					name="article_style"
+					type="selector"
+					default="1"
+					class="styles"
+					label="MOD_AJAX_INTRO_ARTICLES_STYLES"
+					description="MOD_AJAX_INTRO_ARTICLES_STYLES_DESC">
+					<option value="1"><![CDATA[<div style="display:block;width:120px;height:60px;margin:8px auto 0;padding:0;background:url(../modules/mod_ajax_intro_articles/admin/images/flex-style.svg) no-repeat center center;" class="selector-image clearfix">
+						</div>
+						<h4 class="clearfix">Flex Style</h4>]]>
+					</option>	
+					
+					<option value="2"><![CDATA[<div style="display:block;width:120px;height:60px;margin:8px auto 0;padding:0;background:url(../modules/mod_ajax_intro_articles/admin/images/basic-style.svg) no-repeat center center;" class="selector-image clearfix">
+						</div>
+						<h4 class="clearfix">Basic Blog</h4>]]>
+					</option>
+					<option value="3"><![CDATA[<div style="display:block;width:120px;height:60px;margin:8px auto 0;padding:0;background:url(../modules/mod_ajax_intro_articles/admin/images/overlay-style.svg) no-repeat center center;" class="selector-image clearfix">
+						</div>
+						<h4 class="clearfix">Overlay Style</h4>]]>
+					</option>	
+				</field>
+				
+				<field
+					name="overlay_effects"
+					type="list"
+					multiple="true"
+					size="10"
+					default=""
+					label="MOD_AJAX_INTRO_ARTICLES_INTROTEXT_OVERLAY_EFFECTS"
+					description="MOD_AJAX_INTRO_ARTICLES_INTROTEXT_OVERLAY_EFFECTS_DESC"
+					showon="article_style:3">
+					<option value="zoom">MOD_AJAX_INTRO_ARTICLES_INTROTEXT_OVERLAY_ZOOM</option>
+					<option value="grayscale">MOD_AJAX_INTRO_ARTICLES_INTROTEXT_OVERLAY_GRAYSCALE</option>
+					<option value="blur">MOD_AJAX_INTRO_ARTICLES_INTROTEXT_OVERLAY_BLUR</option>
+				</field>
+				<field name="overlay_color" type="colorpicker" default="" label="MOD_AJAX_INTRO_ARTICLES_OVERLAY_COLOR" description="MOD_AJAX_INTRO_ARTICLES_OVERLAY_COLOR_DESC" showon="article_style:3" />
+				
+				<field type="apspacer" style="margin:0 auto;" name="overlay_zoom_spacer_1" showon="article_style:3" hr="true" />
+					
+				<field
+					name="show_title"
+					type="radio"
+					default="1"
+					class="btn-group btn-group-yesno"
+					label="MOD_AJAX_INTRO_ARTICLES_SHOW_TITLE"
+					description="MOD_AJAX_INTRO_ARTICLES_SHOW_TITLE_DESC">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+				
+				<field name="title_size" 
+					type="apslide"
+					default="22"
+					data-slider-range="12,36"
+					data-slider-step="1"
+					data-content="data-content"
+					append="px"
+					label="MOD_AJAX_INTRO_ARTICLES_TITLE_SIZE"
+					description="MOD_AJAX_INTRO_ARTICLES_TITLE_SIZE_DESC"
+					showon="show_title:1" />
+
+				
+				<field
+					name="show_introtext"
+					type="radio"
+					default="1"
+					class="btn-group btn-group-yesno"
+					label="MOD_AJAX_INTRO_ARTICLES_INTROTEXT"
+					description="MOD_AJAX_INTRO_ARTICLES_INTROTEXT_DESC">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+				
+				<field
+					name="limit_words"
+					type="number"
+					default="25"
+					label="MOD_AJAX_INTRO_ARTICLES_INTROTEXT_LIMIT_WORDS"
+					description="MOD_AJAX_INTRO_ARTICLES_INTROTEXT_LIMIT_WORDS_DESC"
+					min="0"
+					max="100"
+					step="1"
+					showon="show_introtext:1" />
+					
+				<field
+					name="strip_tags"
+					type="radio"
+					default="1"
+					class="btn-group"
+					label="MOD_AJAX_INTRO_ARTICLES_INTROTEXT_STRIP_TAGS"
+					description="MOD_AJAX_INTRO_ARTICLES_INTROTEXT_STRIP_TAGS_DESC"
+					showon="show_introtext:1">
+					<option value="1">JYES</option>
+                    <option value="0">JNO</option>
+				</field>
+				
+				<field name="introtext_size" 
+					type="apslide"
+					default="15"
+					data-slider-range="12,24"
+					data-slider-step="1"
+					data-content="data-content"
+					append="px"
+					label="MOD_AJAX_INTRO_ARTICLES_INTROTEXT_SIZE"
+					description="MOD_AJAX_INTRO_ARTICLES_INTROTEXT_SIZE_DESC"
+					showon="show_introtext:1" />
+					
+				<field type="apspacer" style="margin:0 auto;" name="introtext_spacer_1" showon="show_introtext:1" hr="true" />
+				
+				<field
+					name="show_author"
+					type="radio"
+					default="0"
+					class="btn-group btn-group-yesno"
+					label="MOD_AJAX_INTRO_ARTICLES_SHOW_AUTHOR"
+					description="MOD_AJAX_INTRO_ARTICLES_SHOW_AUTHOR_DESC">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+				
+				<field
+					name="show_category"
+					type="radio"
+					default="0"
+					class="btn-group btn-group-yesno"
+					label="MOD_AJAX_INTRO_ARTICLES_SHOW_CATEGORY"
+					description="MOD_AJAX_INTRO_ARTICLES_SHOW_CATEGORY_DESC">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+				
+				<field
+					name="show_date"
+					type="radio"
+					default="0"
+					class="btn-group btn-group-yesno"
+					label="MOD_AJAX_INTRO_ARTICLES_SHOW_DATE"
+					description="MOD_AJAX_INTRO_ARTICLES_SHOW_DATE_DESC">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+                
+                <field
+					name="show_date_format"
+					type="text"
+					default="DATE_FORMAT_LC3"
+					label="MOD_AJAX_INTRO_ARTICLES_DATEFIELDFORMAT_LABEL"
+					description="MOD_AJAX_INTRO_ARTICLES_DATEFIELDFORMAT_DESC" 
+					showon="show_date:1" />
+		
+				<field
+					name="show_hits"
+					type="radio"
+					default="0"
+					class="btn-group btn-group-yesno"
+					label="MOD_AJAX_INTRO_ARTICLES_SHOW_HITS"
+					description="MOD_AJAX_INTRO_ARTICLES_SHOW_HITS_DESC">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+				
+				<field
+					name="show_rating"
+					type="radio"
+					default="0"
+					class="btn-group btn-group-yesno"
+					label="MOD_AJAX_INTRO_ARTICLES_SHOW_RATING"
+					description="MOD_AJAX_INTRO_ARTICLES_SHOW_RATING_DESC">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+				
+				<field
+					name="show_readmore"
+					label="JGLOBAL_SHOW_READMORE_LABEL"
+					description="JGLOBAL_SHOW_READMORE_DESC"
+					type="radio"
+					default="0"
+					class="btn-group btn-group-yesno">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+				<!--<field type="apspacer" style="margin:0 auto;" name="readmore_spacer1" showon="show_readmore:1" hr="true" />-->
+				<field
+					name="readmore_button"
+					type="selector"
+					default="default"
+					label="MOD_AJAX_INTRO_ARTICLES_AJAX_READMORE_BUTTON"
+					description="MOD_AJAX_INTRO_ARTICLES_AJAX_READMORE_BUTTON_DESC"
+					class="buttons"
+					showon="show_readmore:1">
+					<option value="default" btn="btn-default">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_DEFAULT</option>
+					<option value="dark" btn="btn-dark">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_DARK</option>
+					<option value="light" btn="btn-light">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_LIGHT</option>
+					<option value="primary" btn="btn-primary">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_PRIMARY</option>
+					<option value="success" btn="btn-success">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_SUCCESS</option>
+					<option value="info" btn="btn-info">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_INFO</option>
+					<option value="warning" btn="btn-warning">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_WARNING</option>
+					<option value="danger" btn="btn-danger">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_DANGER</option>
+					<option value="link" btn="btn-link">MOD_AJAX_INTRO_ARTICLES_AJAX_BUTTON_LINK</option>
+				</field>
+				
+				<field name="readmore_btn_text"
+					type="text"
+					hint="MOD_AJAX_INTRO_ARTICLES_AJAX_READMORE_TEXT_HINT"
+					label="MOD_AJAX_INTRO_ARTICLES_AJAX_READMORE_TEXT"
+					description="MOD_AJAX_INTRO_ARTICLES_AJAX_READMORE_TEXT_DESC" 
+					showon="show_readmore:1" />
+					
+				<field
+					name="align_readmore_button"
+					type="selector"
+					default="left"
+					label="MOD_AJAX_INTRO_ARTICLES_AJAX_READMORE_ALIGN_READMORE"
+					description=""
+					class="buttons"
+					showon="show_readmore:1">
+					<option value="left" icon="pull-left fa fa-align-left">MOD_AJAX_INTRO_ARTICLES_AJAX_READMORE_ALIGN_LEFT</option>
+					<option value="right" icon="pull-right fa fa-align-right">MOD_AJAX_INTRO_ARTICLES_AJAX_READMORE_ALIGN_RIGHT</option>
+				</field>
+				
+				<field type="apspacer" style="margin:0 auto;" name="readmore_spacer_2" showon="show_readmore:1" hr="true" />
+				
+				<field
+					name="show_social_share"
+					type="radio"
+					default="0"
+					class="btn-group btn-group-yesno"
+					label="MOD_AJAX_INTRO_ARTICLES_SHOW_SOCIAL_SHARE"
+					description="MOD_AJAX_INTRO_ARTICLES_SHOW_SOCIAL_SHARE_DESC">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+	
+				<field
+					name="show_tags"
+					type="radio"
+					default="0"
+					class="btn-group btn-group-yesno"
+					label="MOD_AJAX_INTRO_ARTICLES_SHOW_TAGS"
+					description="MOD_AJAX_INTRO_ARTICLES_SHOW_TAGS_DESC">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+
+			</fieldset>
+
+			<fieldset name="advanced">
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field name="moduleclass_sfx" type="textarea" rows="3" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.8" type="plugin" group="system" method="upgrade">
+  <name>System - SP Cookie Consent</name>
+  <author>JoomShaper.com</author>
+  <creationDate>May 2018</creationDate>
+  <copyright>Copyright (C) 2010 - 2018 JoomShaper. All rights reserved.</copyright>
+  <license>http://www.gnu.org/licenses/gpl-2.0.html GPLv2 or later</license>
+  <authorEmail>support@joomshaper.com</authorEmail>
+  <authorUrl>www.joomshaper.com</authorUrl>
+  <version>1.0.0</version>
+  <description>SP Cookie Consent - A plugin to display cookie notice to the website visitors.</description>
+
+  <updateservers>
+    <server type="extension" priority="1" name="System - SP Cookie Consent">http://www.joomshaper.com/updates/plg-system-cookieconsent.xml</server>
+  </updateservers>
+
+  <languages>
+    <language tag="en-GB">language/en-GB.plg_system_spcookieconsent.ini</language>
+  </languages>
+
+  <files>
+    <filename plugin="spcookieconsent">spcookieconsent.php</filename>
+    <folder plugin="spcookieconsent">assets</folder>
+  </files>
+
+  <config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="cookie_content" type="textarea" default="We use cookies to ensure that we give you the best experience on our website." label="SP_COOKIE_CONSENT_CONTENT" filter="safehtml" />
+        <field name="button_text" type="text" default="I accept" label="SP_COOKIE_CONSENT_BUTTON_TEXT" />
+        <field name="bg_color" type="color" default="#4a13d6" label="SP_COOKIE_CONSENT_BG_COLOR" />
+        <field name="text_color" type="color" default="#FFFFFF" label="SP_COOKIE_CONSENT_TEXT_COLOR" />
+        <field name="link_color" type="color" default="#f5f5f5" label="SP_COOKIE_CONSENT_LINK_COLOR" />
+        <field name="button_bg_color" type="color" default="#FFFFFF" label="SP_COOKIE_CONSENT_BUTTON_BG_COLOR" />
+        <field name="button_text_color" type="color" default="#333" label="SP_COOKIE_CONSENT_BUTTON_TEXT_COLOR" />
+        <field name="display_position" type="list" default="bottom" label="SP_COOKIE_CONSENT_DISPLAY_POSITION">
+          <option value="bottom_left">SP_COOKIE_CONSENT_POSITION_BOTTOM_LEFT</option>
+          <option value="bottom_right">SP_COOKIE_CONSENT_POSITION_BOTTOM_RIGHT</option>
+          <option value="bottom">SP_COOKIE_CONSENT_POSITION_BOTTOM</option>
+        </field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
